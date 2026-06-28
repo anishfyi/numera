@@ -22,10 +22,10 @@
 <style>
 /* ---- page scaffold ---- */
 .wrap{ max-width:1180px; margin:0 auto; padding:0 var(--gutter); }
-.lede-hero{ padding:140px 0 var(--s7); }
+.lede-hero{ padding:92px 0 var(--s5); }
 .lede-hero .spec{ color:var(--text-3); }
-.h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:.96;
-  font-size:clamp(40px,6.6vw,80px); margin:var(--s4) 0 var(--s4); }
+.h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:.95;
+  font-size:clamp(33px,5vw,62px); margin:var(--s3) 0 var(--s3); }
 .h-sub{ font-size:clamp(17px,1.4vw,21px); color:var(--text-2); max-width:60ch; line-height:1.6; }
 .hi-ok{ color:var(--ok); }
 .row{ display:flex; flex-wrap:wrap; gap:var(--s3); }
@@ -36,8 +36,19 @@
 .note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2); max-width:60ch; line-height:1.6; }
 
 /* ---- hero two-path + close-card ---- */
-.hero-grid{ display:grid; grid-template-columns:1fr; gap:var(--s7); align-items:center; }
+.hero-grid{ display:grid; grid-template-columns:1fr; gap:var(--s5); align-items:center; }
 @media(min-width:980px){ .hero-grid{ grid-template-columns:1.05fr .95fr; } }
+/* on phones, tighten so the big NUMERA still rises into view under the stacked card */
+@media(max-width:640px){
+  .lede-hero{ padding:64px 0 var(--s3); }
+  .hero-grid{ gap:var(--s4); }
+  .close-card{ font-size:11px; }
+  .cc-head{ padding:9px 14px; }
+  .cc-steps{ padding:2px 14px; }
+  .cc-steps li{ padding:5px 0; }
+  .cc-sealed{ padding:8px 14px; }
+  .cc-seal{ display:none; }   /* the green "Period sealed" row already shows it */
+}
 
 /* ---- feature list ---- */
 .feat{ list-style:none; margin:var(--s5) 0 0; display:grid; gap:var(--s3); }
@@ -113,11 +124,11 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
       <span class="spec">AI ACCOUNTANT · LOCAL-FIRST</span>
       <h1 class="h-big">Never close the books<br>by hand again.</h1>
       <p class="h-sub">Two ways to run it. <b>Numera Lite</b> is open source and does your basic books on your laptop with the Claude Code CLI, free forever. <b>NumeraAI</b> is the full agent that runs your whole month-end close on your real ledgers, <span class="hi-ok">drafted by AI, approved by you, provable forever.</span></p>
-      <div class="row" style="margin-top:var(--s6)">
+      <div class="row" style="margin-top:var(--s5)">
         <a class="btn btn-primary" href="https://github.com/anishfyi/numera">Get Numera Lite, free <span class="glyph">↗</span></a>
         <a class="btn btn-secondary" href="#full">See the full agent</a>
       </div>
-      <p class="spec" style="margin-top:var(--s5); color:var(--text-3)">OPEN SOURCE · RUNS ON YOUR MACHINE · YOU CONFIRM EVERY WRITE</p>
+      <p class="spec" style="margin-top:var(--s4); color:var(--text-3)">OPEN SOURCE · RUNS ON YOUR MACHINE · YOU CONFIRM EVERY WRITE</p>
     </div>
 
     <!-- the proof: a month-end close, done and sealed -->
