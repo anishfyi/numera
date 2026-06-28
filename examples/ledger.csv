@@ -1,0 +1,13 @@
+txn,date,account,debit,credit,memo
+1,2026-05-01,Owner capital,0,10000.00,Opening capital
+1,2026-05-01,Bank,10000.00,0,Opening capital
+2,2026-05-02,Rent expense,1200.00,0,Office rent May
+2,2026-05-02,Bank,0,1200.00,Office rent May
+3,2026-05-04,Accounts receivable,5000.00,0,Invoice INV-001 Acme
+3,2026-05-04,Sales,0,5000.00,Invoice INV-001 Acme
+4,2026-05-09,Hosting + software,90.00,0,Vercel + GitHub
+4,2026-05-09,Bank,0,90.00,Vercel + GitHub
+5,2026-05-18,Bank,5000.00,0,Acme paid INV-001
+5,2026-05-18,Accounts receivable,0,5000.00,Acme paid INV-001
+6,2026-05-31,Bank charges,15.00,0,Monthly account fee
+6,2026-05-31,Bank,0,15.00,Monthly account fee

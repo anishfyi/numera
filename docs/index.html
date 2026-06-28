@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NUM∑RA AI · the AI that closes your books</title>
+<meta name="description" content="NumeraAI is an AI accountant. Numera Lite is open source and runs on your laptop with the Claude Code CLI. The full NumeraAI does your whole month-end close on your real ledgers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="numera.css">
+<script>
+  (function(){
+    if(localStorage.getItem('numera-theme') === 'dark'){ document.documentElement.dataset.theme = 'dark'; }
+    window.numeraTheme = function(){
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      if(next === 'dark'){ root.dataset.theme = 'dark'; } else { delete root.dataset.theme; }
+      localStorage.setItem('numera-theme', next);
+    };
+  })();
+</script>
+<style>
+/* ---- page scaffold ---- */
+.wrap{ max-width:1180px; margin:0 auto; padding:0 var(--gutter); }
+.lede-hero{ padding:140px 0 var(--s7); }
+.lede-hero .spec{ color:var(--text-3); }
+.h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:.96;
+  font-size:clamp(40px,6.6vw,80px); margin:var(--s4) 0 var(--s4); }
+.h-sub{ font-size:clamp(17px,1.4vw,21px); color:var(--text-2); max-width:60ch; line-height:1.6; }
+.hi-ok{ color:var(--ok); }
+.row{ display:flex; flex-wrap:wrap; gap:var(--s3); }
+.section{ padding:var(--s9) 0; border-top:1px solid var(--line-2); scroll-margin-top:90px; }
+.eyebrow{ font-family:var(--f-data); font-size:11px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--text-3); }
+.h2{ font-family:var(--f-display); font-weight:780; letter-spacing:-.025em; line-height:1.02;
+  font-size:clamp(30px,4.4vw,52px); margin:var(--s3) 0 var(--s4); }
+.note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2); max-width:60ch; line-height:1.6; }
+
+/* ---- hero two-path + close-card ---- */
+.hero-grid{ display:grid; grid-template-columns:1fr; gap:var(--s7); align-items:center; }
+@media(min-width:980px){ .hero-grid{ grid-template-columns:1.05fr .95fr; } }
+
+/* ---- feature list ---- */
+.feat{ list-style:none; margin:var(--s5) 0 0; display:grid; gap:var(--s3); }
+.feat li{ display:flex; gap:12px; font-size:15px; color:var(--text-2); line-height:1.5; }
+.feat li b{ color:var(--text); font-weight:600; }
+.feat li::before{ content:"+"; color:var(--ok); font-family:var(--f-data); font-weight:600; flex:none; }
+
+/* ---- code block ---- */
+.code{ background:var(--bg-inset); border:1px solid var(--line-2); border-radius:var(--r-m);
+  padding:var(--s4) var(--s5); font-family:var(--f-data); font-size:13px; line-height:1.7; color:var(--text);
+  overflow-x:auto; margin:var(--s5) 0; white-space:pre; }
+.code .c{ color:var(--text-3); }
+
+/* ---- two product cards ---- */
+.cards2{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); }
+@media(min-width:820px){ .cards2{ grid-template-columns:1fr 1fr; } }
+.pcard{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
+  box-shadow:var(--shadow-1); padding:var(--s6); }
+.pcard h3{ font-family:var(--f-display); font-size:24px; letter-spacing:-.02em; }
+.pcard .tag{ font-family:var(--f-data); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  padding:3px 9px; border-radius:999px; display:inline-block; margin-bottom:var(--s3); }
+.tag-free{ color:var(--ok); background:var(--ok-soft); border:1px solid var(--ok-line); }
+.tag-full{ color:var(--seal); background:var(--seal-soft); border:1px solid var(--err-line); }
+
+/* ---- pricing ---- */
+.prices{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); align-items:stretch; }
+@media(min-width:880px){ .prices{ grid-template-columns:repeat(3,1fr); } }
+.price{ position:relative; background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
+  box-shadow:var(--shadow-1); padding:var(--s6); display:flex; flex-direction:column; }
+.price.feature{ border-color:var(--ok-line); box-shadow:var(--shadow-2); }
+.price .badge{ position:absolute; top:-11px; left:var(--s6); font-family:var(--f-data); font-size:10px;
+  letter-spacing:.1em; text-transform:uppercase; background:var(--ok); color:var(--block-text);
+  padding:4px 10px; border-radius:999px; }
+.price .pname{ font-family:var(--f-data); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
+.price .amt{ font-family:var(--f-display); font-weight:800; letter-spacing:-.03em; font-size:clamp(34px,4vw,46px); margin:var(--s3) 0 2px; }
+.price .amt small{ font-size:16px; font-weight:500; color:var(--text-3); letter-spacing:0; }
+.price .sub2{ font-size:13.5px; color:var(--text-3); min-height:38px; }
+.price ul{ list-style:none; margin:var(--s4) 0 var(--s5); display:grid; gap:10px; }
+.price li{ font-size:14px; color:var(--text-2); display:flex; gap:9px; line-height:1.45; }
+.price li::before{ content:"✓"; color:var(--ok); flex:none; }
+.price .btn{ margin-top:auto; }
+.pfoot{ text-align:center; margin-top:var(--s5); color:var(--text-3); font-size:13.5px; }
+
+/* ---- footer ---- */
+footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:var(--s7) 0; }
+.foot{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--s4); align-items:center; color:var(--text-3); font-size:13px; }
+.foot a{ color:var(--text-2); }
+</style>
+</head>
+<body>
+
+<!-- ===== header ===== -->
+<header class="site">
+  <a href="#top" class="wordmark">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></a>
+  <nav class="primary" aria-label="Primary">
+    <a href="#lite">Lite</a>
+    <a href="#full">Full agent</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://github.com/anishfyi/numera">GitHub</a>
+  </nav>
+  <div class="header-cta">
+    <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark">◐</button>
+    <a class="btn btn-primary" href="#pricing">Get started <span class="glyph">↗</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== hero ===== -->
+<section class="wrap lede-hero">
+  <div class="hero-grid">
+    <div>
+      <span class="spec">AI ACCOUNTANT · LOCAL-FIRST</span>
+      <h1 class="h-big">Never close the books<br>by hand again.</h1>
+      <p class="h-sub">Two ways to run it. <b>Numera Lite</b> is open source and does your basic books on your laptop with the Claude Code CLI, free forever. <b>NumeraAI</b> is the full agent that runs your whole month-end close on your real ledgers, <span class="hi-ok">drafted by AI, approved by you, provable forever.</span></p>
+      <div class="row" style="margin-top:var(--s6)">
+        <a class="btn btn-primary" href="https://github.com/anishfyi/numera">Get Numera Lite, free <span class="glyph">↗</span></a>
+        <a class="btn btn-secondary" href="#full">See the full agent</a>
+      </div>
+      <p class="spec" style="margin-top:var(--s5); color:var(--text-3)">OPEN SOURCE · RUNS ON YOUR MACHINE · YOU CONFIRM EVERY WRITE</p>
+    </div>
+
+    <!-- the proof: a month-end close, done and sealed -->
+    <div class="close-card" aria-label="A month-end close, every step done and sealed">
+      <div class="cc-head"><span>Month-end close</span><span class="cc-tag">May 2026 · demo</span></div>
+      <ul class="cc-steps">
+        <li><span class="cc-do"><i class="cc-tick">✓</i>Bank reconciled</span><span class="cc-val">377.00 → 0.00</span></li>
+        <li><span class="cc-do"><i class="cc-tick">✓</i>Uncategorized cleared</span><span class="cc-val">8 of 8 coded</span></li>
+        <li><span class="cc-do"><i class="cc-tick">✓</i>Journals posted</span><span class="cc-val">recurring + accruals</span></li>
+        <li><span class="cc-do"><i class="cc-tick">✓</i>VAT prepped</span><span class="cc-val">Box 5 · 5,200.00</span></li>
+        <li><span class="cc-do"><i class="cc-tick">✓</i>Variances explained</span><span class="cc-val">3 of 3 material</span></li>
+      </ul>
+      <div class="cc-sealed"><span>Period sealed</span><span>✓ signed</span></div>
+      <div class="cc-seal">
+        <span class="cc-seal-mark">NUM∑RA<br>SEALED</span>
+        <span class="cc-seal-text"><b>Sealed into the audit chain.</b><br>HMAC-signed · you confirmed · read back line by line</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== megamark band ===== -->
+<div class="megamark megamark-band" aria-hidden="true"><span>NUM<span class="sigma">∑</span>RA</span></div>
+
+<!-- ===== LITE ===== -->
+<section class="wrap section" id="lite">
+  <span class="eyebrow">01 · OPEN SOURCE · FREE FOREVER</span>
+  <h2 class="h2">Numera Lite.<br>Basic books, on your machine.</h2>
+  <p class="note">A small, open-source bookkeeper you run locally with the Claude Code CLI. It keeps one plain-text ledger on your laptop, reasons in real double-entry, and never writes a thing without showing you the entry and getting a yes. No cloud, no account, no data leaving your machine.</p>
+
+  <div class="cards2">
+    <div class="pcard">
+      <span class="tag tag-free">what it does</span>
+      <ul class="feat">
+        <li><b>Records</b> double-entry entries from plain English ("paid 1,200 rent").</li>
+        <li><b>Categorizes</b> bank lines to the right accounts, and learns your coding.</li>
+        <li><b>Reconciles</b> a bank statement CSV and surfaces the exact difference.</li>
+        <li><b>Reports</b> a simple P&amp;L and balance sheet, every total tied to the rows.</li>
+        <li><b>Remembers</b> your chart of accounts via a <a href="https://github.com/anishfyi/trove">trove</a> layer.</li>
+      </ul>
+    </div>
+    <div class="pcard">
+      <span class="tag tag-free">run it in 2 minutes</span>
+      <div class="code"><span class="c"># 1. install the Claude Code CLI, then:</span>
+git clone https://github.com/anishfyi/numera.git
+mkdir -p ~/.claude/skills
+cp -r numera/skill/numera-lite ~/.claude/skills/
+
+<span class="c"># 2. in your books folder:</span>
+cp numera/examples/ledger.csv ./
+claude
+
+<span class="c"># 3. just talk to it:</span>
+<span class="c">&gt; record: paid 90 to Vercel for hosting</span>
+<span class="c">&gt; reconcile ledger.csv against bank-may.csv</span>
+<span class="c">&gt; show me the P&amp;L for May</span></div>
+      <div class="row">
+        <a class="btn btn-primary" href="https://github.com/anishfyi/numera">View on GitHub <span class="glyph">↗</span></a>
+        <a class="btn btn-ghost" href="https://github.com/anishfyi/numera#install-about-2-minutes">Install guide ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FULL ===== -->
+<section class="wrap section" id="full">
+  <span class="eyebrow">02 · THE FULL AGENT</span>
+  <h2 class="h2">NumeraAI.<br>The whole close, on your real ledgers.</h2>
+  <p class="note">Everything in Lite, plus the full month-end close written back to the books you already keep. It reconciles, codes, posts the journals, preps the VAT and signs the period off, and every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. The close, without the grind, without handing over control.</p>
+  <ul class="feat" style="max-width:none; grid-template-columns:1fr; gap:var(--s3)">
+    <li><b>Write-back</b> to QuickBooks, Xero, Sage Intacct and NetSuite, no migration.</li>
+    <li><b>The trust layer</b>: propose to confirm to post to read-back to sealed, on every entry.</li>
+    <li><b>Tamper-evident audit chain</b>: HMAC-signed, who prepared it, who confirmed it.</li>
+    <li><b>The close cockpit</b>: bank rec, recurring, fixed assets, FX, VAT, sign-off, close pack.</li>
+    <li><b>Local-first</b>: runs on your machine or your cloud; your credentials never leave the box.</li>
+  </ul>
+  <div class="row" style="margin-top:var(--s6)">
+    <a class="btn btn-primary" href="#pricing">See pricing <span class="glyph">↗</span></a>
+    <a class="btn btn-secondary" href="mailto:anish@trampoline-store.com?subject=NumeraAI%20-%20the%20full%20agent">Talk to us</a>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="wrap section" id="pricing">
+  <span class="eyebrow">03 · PRICING</span>
+  <h2 class="h2">Simple. One plan,<br>or hire it by the hour.</h2>
+  <p class="note">Lite is free and open source. The full agent is one price with everything in it, no tiers and no add-ons. Or skip the subscription and pay only for the work it does.</p>
+
+  <div class="prices">
+    <!-- Lite -->
+    <div class="price">
+      <span class="pname">Numera Lite</span>
+      <div class="amt">$0<small> / forever</small></div>
+      <p class="sub2">Open source. Self-hosted. Bring your own Claude Code.</p>
+      <ul>
+        <li>Basic double-entry bookkeeping</li>
+        <li>Categorize + reconcile locally</li>
+        <li>Simple P&amp;L and balance sheet</li>
+        <li>Runs entirely on your machine</li>
+      </ul>
+      <a class="btn btn-secondary" href="https://github.com/anishfyi/numera">Get it on GitHub</a>
+    </div>
+
+    <!-- Full -->
+    <div class="price feature">
+      <span class="badge">founder price · first 1,000</span>
+      <span class="pname">NumeraAI</span>
+      <div class="amt">$79<small> / month</small></div>
+      <p class="sub2">For the first 1,000 members. $149/month after. One plan, everything included.</p>
+      <ul>
+        <li>The full month-end close</li>
+        <li>Write-back to QuickBooks, Xero, Sage, NetSuite</li>
+        <li>Propose to confirm to seal, on every write</li>
+        <li>Tamper-evident audit chain</li>
+        <li>The close cockpit, end to end</li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:anish@trampoline-store.com?subject=NumeraAI%20-%20claim%20founder%20price">Claim founder price <span class="glyph">↗</span></a>
+    </div>
+
+    <!-- Hire -->
+    <div class="price">
+      <span class="pname">Hire it</span>
+      <div class="amt">$9<small> / hour</small></div>
+      <p class="sub2">Rather pay for output than a subscription? Hire the agent by the hour of work.</p>
+      <ul>
+        <li>Pay only for hours worked</li>
+        <li>The full agent, on demand</li>
+        <li>Good for a one-off cleanup or a single close</li>
+        <li>No monthly commitment</li>
+      </ul>
+      <a class="btn btn-secondary" href="mailto:anish@trampoline-store.com?subject=NumeraAI%20-%20hire%20by%20the%20hour">Hire NumeraAI</a>
+    </div>
+  </div>
+  <p class="pfoot">Every plan: local-first, you confirm every write, and your books never leave the box.</p>
+</section>
+
+</main>
+
+<!-- ===== footer ===== -->
+<footer class="site">
+  <div class="wrap foot">
+    <span class="wordmark" style="font-size:20px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
+    <span>Refuse to be unreconciled.</span>
+    <span><a href="https://github.com/anishfyi/numera">GitHub</a> · <a href="mailto:anish@trampoline-store.com">Contact</a> · &copy;2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
