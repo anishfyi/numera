@@ -63,10 +63,18 @@ to the ledger after you say yes.
 ## How it works
 
 NumeraAI Lite is a [Claude Code skill](https://docs.claude.com/claude-code) -
-a folder of instructions and reference knowledge (`skill/numera-lite/`). Claude
-Code loads it when you ask for bookkeeping, reads the double-entry rules and the
-default chart of accounts, and acts as your bookkeeper against a local `ledger.csv`.
-The optional **trove** layer gives it durable memory of your accounts and rules.
+a folder of instructions plus a bundled knowledge **trove** (`skill/numera-lite/`).
+Claude Code loads it when you ask for bookkeeping and acts as your bookkeeper
+against a local `ledger.csv`.
+
+The skill ships a knowledge trove at `skill/numera-lite/trove/` (built in the
+[trove](https://github.com/anishfyi/trove) format: an `INDEX.md` plus one markdown
+file per topic in `entries/`) covering accounting fundamentals, the financial
+statements, the month-end close, US taxation, sales tax / VAT, and two accounting
+platforms - **QuickBooks Online** and **Sage Intacct**. Lite reads the relevant
+entry before reasoning about a topic. Separately, the optional **trove plugin**
+gives it durable memory of *your* chart of accounts and vendor coding rules across
+sessions.
 
 There is no server and no database. Your ledger is a CSV you own.
 

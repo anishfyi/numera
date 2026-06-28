@@ -54,8 +54,23 @@ txn,date,account,debit,credit,memo
 - **Answer** - "what did we spend on software in May?", "what's our cash balance?"
   - always tie totals back to the ledger rows so the number is provable.
 
-Read `references/accounting-basics.md` for double-entry rules and
-`references/chart-of-accounts.md` for the default accounts before your first entry.
+## Knowledge: the bundled trove
+
+This skill ships a knowledge trove at `trove/INDEX.md` (built in the
+[trove](https://github.com/anishfyi/trove) format: an index plus one markdown file
+per topic in `trove/entries/`). Read the relevant entry before you reason about a
+topic - do not work from memory on the things that must be exact:
+
+- `trove/entries/accounting-fundamentals.md` - read before your first journal entry
+  (double-entry, debits/credits, the chart of accounts, accrual vs cash).
+- `trove/entries/financial-statements.md` - before producing a P&L / balance sheet.
+- `trove/entries/month-end-close.md` - when closing a period.
+- `trove/entries/quickbooks-online.md` or `trove/entries/sage-intacct.md` - when the
+  user's books live in QuickBooks or Sage Intacct.
+- `trove/entries/us-taxation.md` and `trove/entries/sales-tax-and-vat.md` - when tax,
+  sales tax, or VAT come up. Verify any figure that changes yearly against the source.
+
+Start at `trove/INDEX.md` to pick the right entry.
 
 ## Memory: the trove layer
 
