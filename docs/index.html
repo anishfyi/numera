@@ -22,8 +22,11 @@
 <style>
 /* ---- page scaffold ---- */
 .wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter); }
-.lede-hero{ padding:76px 0 var(--s4); }
+.lede-hero{ padding:104px 0 var(--s6); }
 .lede-hero .spec{ color:var(--text-3); }
+/* hero + megamark fill the first screen; megamark sits flush at the base on load */
+.hero-fold{ min-height:100vh; min-height:100svh; display:flex; flex-direction:column; }
+.hero-fold .megamark{ margin-top:auto; }
 .h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:.96;
   font-size:clamp(24px,3.2vw,40px); margin:var(--s2) 0 var(--s3); }
 /* trim the close-card a little so the hero is shorter and the big NUMERA shows more */
@@ -125,6 +128,8 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
 
 <main id="top">
 
+<!-- hero + megamark fill the first screen; the wordmark pins to the base -->
+<div class="hero-fold">
 <!-- ===== hero ===== -->
 <section class="wrap lede-hero">
   <div class="hero-grid">
@@ -160,6 +165,7 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
 
 <!-- ===== megamark band ===== -->
 <div class="megamark megamark-band" aria-hidden="true"><span>NUM<span class="sigma">∑</span>RA</span></div>
+</div><!-- /hero-fold -->
 
 <!-- ===== LITE ===== -->
 <section class="wrap section" id="lite">
