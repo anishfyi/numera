@@ -24,9 +24,10 @@
 .wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter); }
 .lede-hero{ padding:104px 0 var(--s6); }
 .lede-hero .spec{ color:var(--text-3); }
-/* hero + megamark fill the first screen; megamark sits flush at the base on load */
-.hero-fold{ min-height:100vh; min-height:100svh; display:flex; flex-direction:column; }
-.hero-fold .megamark{ margin-top:auto; }
+/* hero + megamark fill the first screen; the WHOLE wordmark sits just above the base */
+.hero-fold{ min-height:100vh; min-height:100svh; display:flex; flex-direction:column; padding-bottom:var(--s5); }
+.hero-fold .megamark{ margin-top:auto; overflow:visible; }
+.hero-fold .megamark span{ line-height:.92; transform:none; }  /* no clip, full letters */
 .h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:.96;
   font-size:clamp(24px,3.2vw,40px); margin:var(--s2) 0 var(--s3); }
 /* trim the close-card a little so the hero is shorter and the big NUMERA shows more */
