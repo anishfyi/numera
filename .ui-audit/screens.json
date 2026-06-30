@@ -1,0 +1,6 @@
+[
+  { "name": "landing", "url": "http://localhost:8777/", "viewport": "1440x900", "theme": "light", "status": "pass" },
+  { "name": "landing", "url": "http://localhost:8777/", "viewport": "390x844",  "theme": "light", "status": "pass" },
+  { "name": "landing", "url": "http://localhost:8777/", "viewport": "1440x900", "theme": "dark",  "status": "pass" },
+  { "name": "landing", "url": "http://localhost:8777/", "viewport": "390x844",  "theme": "dark",  "status": "pass" }
+]
