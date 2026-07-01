@@ -64,9 +64,14 @@
 
 /* ---- feature list ---- */
 .feat{ list-style:none; margin:var(--s5) 0 0; display:grid; gap:var(--s3); }
-.feat li{ display:flex; gap:12px; font-size:15px; color:var(--text-2); line-height:1.5; }
+/* flowing text with a hanging "+" marker. NOT display:flex - flex splits the
+   <b>, the text and any inline <a> into separate items, which mangles wrapping
+   (bold terms break into a narrow column; an inline link flies off on its own). */
+.feat li{ position:relative; padding-left:22px; font-size:15px; color:var(--text-2); line-height:1.6; }
+.feat li::before{ content:"+"; position:absolute; left:0; top:0; color:var(--ok); font-family:var(--f-data); font-weight:600; }
 .feat li b{ color:var(--text); font-weight:600; }
-.feat li::before{ content:"+"; color:var(--ok); font-family:var(--f-data); font-weight:600; flex:none; }
+.feat li a{ color:var(--text); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px; }
+.feat li a:hover{ text-decoration-color:var(--ok); }
 
 /* ---- code block ---- */
 .code{ background:var(--bg-inset); border:1px solid var(--line-2); border-radius:var(--r-m);
@@ -131,6 +136,9 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
 @media (max-width:760px){
   .wrap, .lede-hero, .section, .foot{ padding-left:var(--gutter); padding-right:var(--gutter); }
   .section{ padding-top:var(--s7); padding-bottom:var(--s7); }
+  /* footer: the 3 items don't fit one line on a phone, so stack them tidily
+     (centered) instead of the scattered space-between wrap. */
+  .foot{ flex-direction:column; align-items:center; text-align:center; gap:var(--s3); }
 }
 </style>
 </head>
@@ -238,7 +246,7 @@ claude
   <h2 class="h2">NumeraAI.<br>The whole close, on your real ledgers.</h2>
   <p class="note">Everything in Lite, plus the full month-end close written back to the books you already keep. It reconciles, codes, posts the journals, preps the VAT and signs the period off, and every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. The close, without the grind, without handing over control.</p>
   <ul class="feat" style="max-width:64ch; grid-template-columns:1fr; gap:var(--s3)">
-    <li><b>Write-back</b> to QuickBooks, Xero, Sage Intacct and NetSuite, no migration.</li>
+    <li><b>Write-back</b>: to QuickBooks, Xero, Sage Intacct and NetSuite, no migration.</li>
     <li><b>The trust layer</b>: propose to confirm to post to read-back to sealed, on every entry.</li>
     <li><b>Tamper-evident audit chain</b>: HMAC-signed, who prepared it, who confirmed it.</li>
     <li><b>The close cockpit</b>: bank rec, recurring, fixed assets, FX, VAT, sign-off, close pack.</li>
