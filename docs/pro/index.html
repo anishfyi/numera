@@ -87,6 +87,31 @@
 .price .btn{ margin-top:auto; }
 .pfoot{ margin-top:var(--s5); font-size:13.5px; color:var(--text-3); }
 
+/* corner gate badge. Bottom-RIGHT: the content column is left-aligned and
+   capped, so the right gutter is empty and the badge covers nothing. Hidden
+   below 760px, because a fixed element that sits on top of the last
+   interactive control at 390px is a real defect, not a style choice. */
+.access-badge{ position:fixed; right:var(--gutter); bottom:18px; z-index:40;
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--f-data); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--text); background:var(--bg-raised); border:1px solid var(--line-2);
+  box-shadow:var(--shadow-2); border-radius:999px; padding:9px 15px; text-decoration:none; }
+.access-badge:hover{ border-color:var(--ok-line); }
+.access-badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--ok); flex:none; }
+@media(max-width:760px){ .access-badge{ display:none; } }
+
+/* the gate panel */
+.gate{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
+  box-shadow:var(--shadow-1); padding:var(--s6); margin-top:var(--s6); max-width:720px; }
+.gate .lockrow{ display:flex; align-items:center; gap:11px; margin-bottom:var(--s3); }
+.gate .lockrow .pill{ font-family:var(--f-data); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ok); background:var(--ok-soft); border:1px solid var(--ok-line); border-radius:999px; padding:4px 11px; }
+.gate h3{ font-family:var(--f-display); font-size:23px; letter-spacing:-.02em; margin-bottom:var(--s2); }
+.gate p{ font-size:15px; color:var(--text-2); line-height:1.6; }
+.gate ol{ margin:var(--s4) 0 var(--s5) 20px; display:grid; gap:9px; }
+.gate li{ font-size:14.5px; color:var(--text-2); line-height:1.55; }
+.gate li b{ color:var(--text); font-weight:600; }
+
 .compare{ width:100%; border-collapse:collapse; margin-top:var(--s5); font-size:14.5px; }
 .compare th, .compare td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-2); }
 .compare th{ font-family:var(--f-data); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); font-weight:500; }
@@ -107,13 +132,19 @@
     <a href="../#solo">Solo</a>
     <a href="./">Pro</a>
     <a href="#how">How it works</a>
+    <a href="#access">Access</a>
     <a href="https://github.com/anishfyi/numera">GitHub</a>
   </nav>
   <div class="header-cta">
     <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark">◐</button>
+    <a class="btn btn-secondary" href="#access">Console login</a>
     <a class="btn btn-primary" href="#price">Get Numera Pro <span class="glyph">↗</span></a>
   </div>
 </header>
+
+<a class="access-badge" href="#access" title="The console is gated while Numera Pro is in private access">
+  <span class="dot" aria-hidden="true"></span>Investor access only
+</a>
 
 <main>
 
@@ -247,6 +278,31 @@
   <p class="pfoot">Both run local-first: you confirm every write, and your books never leave the box.</p>
 
   <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
+</section>
+
+<section class="wrap section" id="access">
+  <span class="eyebrow">06 · CONSOLE ACCESS</span>
+  <h2 class="h2">The console is gated.</h2>
+  <p class="note">Numera Pro ships as a container you run yourself, not as a public SaaS URL. That is the same local-first decision the rest of the product is built on: your books and your platform credentials never leave a machine you control. It also means there is no open sign-up page to point you at.</p>
+
+  <div class="gate">
+    <div class="lockrow">
+      <span class="pill">Investor access only</span>
+    </div>
+    <h3>Reviewing Numera?</h3>
+    <p>If you are an investor or an accountant we are working with, you already have credentials or can get them in one reply. Access works one of three ways, whichever suits you:</p>
+    <ol>
+      <li><b>A hosted instance.</b> Say the word and a review instance goes up with your account provisioned, running on fixture data so nothing touches real books.</li>
+      <li><b>Run it yourself.</b> One container, one command. You keep the keys and the data never leaves your machine.</li>
+      <li><b>A live walkthrough.</b> Thirty minutes, a real month-end close, start to sealed.</li>
+    </ol>
+    <div class="row">
+      <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro%20-%20console%20access">Request access <span class="glyph">↗</span></a>
+      <a class="btn btn-secondary" href="../">Try Numera Solo instead</a>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:var(--s5)">Numera Solo needs none of this. It is open source, needs no account, and runs on your laptop today: <a href="https://github.com/anishfyi/numera">github.com/anishfyi/numera</a>.</p>
 </section>
 
 </main>
