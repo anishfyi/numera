@@ -21,7 +21,7 @@ not authenticate to them and does not post. A file here describes how a platform
 works; it does not give Solo a write path.
 
 Deep integration, live write-back, per-platform failure handling and a
-tamper-evident audit chain across those writes are Numera Pro.
+tamper-evident audit chain across those writes are Numera Pro (https://numera.velofy.co).
 
 ## Two things that generalise
 
