@@ -284,22 +284,23 @@
 <section class="wrap section" id="access">
   <span class="eyebrow">06 · CONSOLE ACCESS</span>
   <h2 class="h2">The console is gated.</h2>
-  <p class="note">Numera Pro ships as a container you run yourself, not as a public SaaS URL. That is the same local-first decision the rest of the product is built on: your books and your platform credentials never leave a machine you control. It also means there is no open sign-up page to point you at.</p>
+  <p class="note">Numera Pro ships as a container you run yourself, not as a public SaaS URL. That is the same local-first decision the rest of the product is built on: your books and your platform credentials never leave a machine you control. So there is no open sign-up here, and there never will be.</p>
+  <p class="note" style="margin-top:var(--s3)">What there is, for people evaluating Numera, is a <b>read-only console on demo data</b> at <a href="https://numera-console.velofy.co/login.html">numera-console.velofy.co</a>. Every page of the real console, every figure fabricated, nothing changeable.</p>
 
   <div class="gate">
     <div class="lockrow">
       <span class="pill">Investor access only</span>
     </div>
     <h3>Reviewing Numera?</h3>
-    <p>If you are an investor or an accountant we are working with, you already have credentials or can get them in one reply. Access works one of three ways, whichever suits you:</p>
+    <p>Open the console with the credentials you were sent. If you do not have them, ask and they come back in one reply. Three ways in, whichever suits you:</p>
     <ol>
-      <li><b>A hosted instance.</b> Say the word and a review instance goes up with your account provisioned, running on fixture data so nothing touches real books.</li>
+      <li><b>The review console.</b> Every page of the real product on fabricated demo data, read only, so nothing can be changed and nothing real is exposed.</li>
       <li><b>Run it yourself.</b> One container, one command. You keep the keys and the data never leaves your machine.</li>
       <li><b>A live walkthrough.</b> Thirty minutes, a real month-end close, start to sealed.</li>
     </ol>
     <div class="row">
-      <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro%20-%20console%20access" data-console-link="access">Request access <span class="glyph">↗</span></a>
-      <a class="btn btn-secondary" href="../">Try Numera Solo instead</a>
+      <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html">Open the console <span class="glyph">↗</span></a>
+      <a class="btn btn-secondary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro%20-%20console%20access">Request credentials</a>
     </div>
     <p class="gate-note" data-console-live hidden>Reviewer accounts are <b>read only</b>: you can open every page and inspect the data, and writes are disabled on the account.</p>
   </div>
@@ -349,7 +350,7 @@
   // falls back to the #access section, which explains the gate. That fallback
   // is the href already in the HTML, so this degrades correctly with no JS.
   // ---------------------------------------------------------------------
-  var CONSOLE_URL = "";
+  var CONSOLE_URL = "https://numera-console.velofy.co/login.html";
 
   (function () {
     if (!CONSOLE_URL) return;
