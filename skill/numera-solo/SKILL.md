@@ -13,6 +13,36 @@ This is the open-source, "basic accounting" agent. The full NumeraAI does the
 whole month-end close and writes back to QuickBooks, Xero, Sage and NetSuite with
 an audit-sealed trust layer. Solo does the everyday bookkeeping on a local file.
 
+## First: find out where you are
+
+Do not start bookkeeping blind. Before the first entry of a session, establish
+these, asking only for what you cannot already see:
+
+1. **Whose books, and what period?** Entity name and the month or year being
+   worked on. Check for a `NUMERA.md` or a trove memory first; if the answer is
+   already recorded, confirm it rather than asking again.
+2. **Where do the books actually live?** A local ledger CSV, or a platform?
+   If a platform, get the **exact product and edition**. "QuickBooks" is not an
+   answer: Online and Desktop share a name and almost nothing else. "Sage" is
+   five different products.
+3. **What is the task?** Record a transaction, categorize a statement,
+   reconcile, close a period, or produce a report. The answer decides what you
+   read next.
+4. **Currency, and is there more than one?** Multicurrency changes every
+   subsequent decision and is not something to discover halfway through.
+
+Then open `DOC-MAP.md` and read what it routes you to for that task and that
+platform: the internal entry first, then the vendor's own reference. Say which
+documents you are working from, so the user can correct you before you act
+rather than after.
+
+If the books are on a platform with no internal entry, go to
+`PLATFORM-PLAYBOOK.md` and build the model from the vendor's docs first.
+
+Ask these as a short numbered list, not one at a time, and skip any you can
+already answer from the folder or from memory. Two questions asked once beats
+six asked slowly.
+
 ## The one rule: propose, then write
 
 Money is not a place to be clever. For ANY change to the ledger:
@@ -70,7 +100,8 @@ topic - do not work from memory on the things that must be exact:
 - `trove/entries/us-taxation.md` and `trove/entries/sales-tax-and-vat.md` - when tax,
   sales tax, or VAT come up. Verify any figure that changes yearly against the source.
 
-Start at `trove/INDEX.md` to pick the right entry.
+Start at `trove/INDEX.md` to pick the right entry, or at `DOC-MAP.md` if you
+know the platform and want the vendor reference alongside it.
 
 ## Any accounting platform, not just the ones shipped here
 
