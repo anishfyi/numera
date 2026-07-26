@@ -8,7 +8,7 @@ tags: [accounting, month-end-close, reconciliation, accruals, controls]
 
 The month-end close is the repeatable process that turns a month of raw activity
 into trustworthy financials. This is the workflow NumeraAI automates end to end and
-that Numera Lite walks with you, step by step, proposing each entry.
+that Numera Solo walks with you, step by step, proposing each entry.
 
 ## The checklist
 1. **Cut-off** - make sure every transaction for the period is recorded and nothing

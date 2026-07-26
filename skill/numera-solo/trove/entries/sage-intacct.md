@@ -58,7 +58,7 @@ consolidation. You can operate at a single entity or at the top (consolidated) v
   Intacct adapter builds GL batches this way (balanced GLENTRY lines, controlid for
   idempotency, TRX/exchange-rate fields for multi-currency). A posted batch must balance.
 - **Exports / reports** - the Financial Report Writer and standard reports export to
-  Excel/CSV; export the GL detail to pull the books into a local file Numera Lite can read.
+  Excel/CSV; export the GL detail to pull the books into a local file Numera Solo can read.
 
 ## Concepts and gotchas
 - Think **dimensions, not accounts** - if asked "how do we track project costs?",
@@ -70,5 +70,5 @@ consolidation. You can operate at a single entity or at the top (consolidated) v
 - Reconciliation lives in Cash Management; match Intacct to the bank statement there.
 
 For the safe write loop (propose -> confirm -> read-back -> seal) the full NumeraAI
-uses against Intacct, see the month-end-close entry. Numera Lite reasons over an
+uses against Intacct, see the month-end-close entry. Numera Solo reasons over an
 exported ledger locally and does not write to Intacct.

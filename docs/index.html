@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>NUM∑RA AI · the AI that closes your books</title>
-<meta name="description" content="NumeraAI is an AI accountant. Numera Lite is open source and runs on your laptop with the Claude Code CLI. The full NumeraAI does your whole month-end close on your real ledgers.">
+<meta name="description" content="NumeraAI is an AI accountant. Numera Solo is open source and runs on your laptop with the Claude Code CLI. The full NumeraAI does your whole month-end close on your real ledgers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="numera.css">
@@ -148,7 +148,7 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
 <header class="site">
   <a href="#top" class="wordmark">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></a>
   <nav class="primary" aria-label="Primary">
-    <a href="#lite">Lite</a>
+    <a href="#solo">Solo</a>
     <a href="#full">Full agent</a>
     <a href="#pricing">Pricing</a>
     <a href="https://github.com/anishfyi/numera">GitHub</a>
@@ -169,9 +169,9 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
     <div>
       <span class="spec">AI ACCOUNTANT · LOCAL-FIRST</span>
       <h1 class="h-big">Never close the books<br>by hand again.</h1>
-      <p class="h-sub">Two ways to run it. <b>Numera Lite</b> is open source and does your basic books on your laptop with the Claude Code CLI, free forever. <b>NumeraAI</b> is the full agent that runs your whole month-end close on your real ledgers, <span class="hi-ok">drafted by AI, approved by you, provable forever.</span></p>
+      <p class="h-sub">Two ways to run it. <b>Numera Solo</b> is open source and does your basic books on your laptop with the Claude Code CLI, free forever. <b>NumeraAI</b> is the full agent that runs your whole month-end close on your real ledgers, <span class="hi-ok">drafted by AI, approved by you, provable forever.</span></p>
       <div class="row" style="margin-top:var(--s5)">
-        <a class="btn btn-primary" href="https://github.com/anishfyi/numera">Get Numera Lite, free <span class="glyph">↗</span></a>
+        <a class="btn btn-primary" href="https://github.com/anishfyi/numera">Get Numera Solo, free <span class="glyph">↗</span></a>
         <a class="btn btn-secondary" href="#full">See the full agent</a>
       </div>
       <p class="spec" style="margin-top:var(--s4); color:var(--text-3)">OPEN SOURCE · RUNS ON YOUR MACHINE · YOU CONFIRM EVERY WRITE</p>
@@ -200,10 +200,10 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
 <div class="megamark megamark-band" aria-hidden="true"><span>NUM<span class="sigma">∑</span>RA</span></div>
 </div><!-- /hero-fold -->
 
-<!-- ===== LITE ===== -->
-<section class="wrap section" id="lite">
+<!-- ===== SOLO ===== -->
+<section class="wrap section" id="solo">
   <span class="eyebrow">01 · OPEN SOURCE · FREE FOREVER</span>
-  <h2 class="h2">Numera Lite.<br>Basic books, on your machine.</h2>
+  <h2 class="h2">Numera Solo.<br>Basic books, on your machine.</h2>
   <p class="note">A small, open-source bookkeeper you run locally with the Claude Code CLI. It keeps one plain-text ledger on your laptop, reasons in real double-entry, and never writes a thing without showing you the entry and getting a yes. No cloud, no account, no data leaving your machine.</p>
 
   <div class="cards2">
@@ -222,7 +222,7 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:v
       <div class="code"><span class="c"># 1. install the Claude Code CLI, then:</span>
 git clone https://github.com/anishfyi/numera.git
 mkdir -p ~/.claude/skills
-cp -r numera/skill/numera-lite ~/.claude/skills/
+cp -r numera/skill/numera-solo ~/.claude/skills/
 
 <span class="c"># 2. in your books folder:</span>
 cp numera/examples/ledger.csv ./
@@ -244,7 +244,7 @@ claude
 <section class="wrap section" id="full">
   <span class="eyebrow">02 · THE FULL AGENT</span>
   <h2 class="h2">NumeraAI.<br>The whole close, on your real ledgers.</h2>
-  <p class="note">Everything in Lite, plus the full month-end close written back to the books you already keep. It reconciles, codes, posts the journals, preps the VAT and signs the period off, and every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. The close, without the grind, without handing over control.</p>
+  <p class="note">Everything in Solo, plus the full month-end close written back to the books you already keep. It reconciles, codes, posts the journals, preps the VAT and signs the period off, and every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. The close, without the grind, without handing over control.</p>
   <ul class="feat" style="max-width:64ch; grid-template-columns:1fr; gap:var(--s3)">
     <li><b>Write-back</b>: to QuickBooks, Xero, Sage Intacct and NetSuite, no migration.</li>
     <li><b>The trust layer</b>: propose to confirm to post to read-back to sealed, on every entry.</li>
@@ -262,12 +262,12 @@ claude
 <section class="wrap section" id="pricing">
   <span class="eyebrow">03 · PRICING</span>
   <h2 class="h2">Simple. One plan,<br>or hire it by the hour.</h2>
-  <p class="note">Lite is free and open source. The full agent is one price with everything in it, no tiers and no add-ons. Or skip the subscription and pay only for the work it does.</p>
+  <p class="note">Solo is free and open source. The full agent is one price with everything in it, no tiers and no add-ons. Or skip the subscription and pay only for the work it does.</p>
 
   <div class="prices">
-    <!-- Lite -->
+    <!-- Solo -->
     <div class="price">
-      <span class="pname">Numera Lite</span>
+      <span class="pname">Numera Solo</span>
       <div class="amt">$0<small> / forever</small></div>
       <p class="sub2">Open source. Self-hosted. Bring your own Claude Code.</p>
       <ul>
@@ -281,18 +281,19 @@ claude
 
     <!-- Full -->
     <div class="price feature">
-      <span class="badge">founder price · first 1,000</span>
-      <span class="pname">NumeraAI</span>
-      <div class="amt">$79<small> / month</small></div>
-      <p class="sub2">For the first 1,000 members. $149/month after. One plan, everything included.</p>
+      <span class="badge">intro price · first 6 months</span>
+      <span class="pname">Numera Pro</span>
+      <div class="amt">$99<small> / month</small></div>
+      <p class="sub2">$99/month for your first 6 months, then $199/month. One plan, everything included.</p>
       <ul>
         <li>The full month-end close</li>
-        <li>Write-back to QuickBooks, Xero, Sage, NetSuite</li>
+        <li>Deep integration with any accounting software</li>
+        <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
         <li>Propose to confirm to seal, on every write</li>
         <li>Tamper-evident audit chain</li>
         <li>The close cockpit, end to end</li>
       </ul>
-      <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=NumeraAI%20-%20claim%20founder%20price">Claim founder price <span class="glyph">↗</span></a>
+      <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro%20-%20claim%20intro%20price">Claim intro price <span class="glyph">↗</span></a>
     </div>
 
     <!-- Hire -->

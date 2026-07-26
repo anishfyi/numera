@@ -1,8 +1,8 @@
-# NumeraAI Lite
+# Numera Solo
 
 **A small, open-source accounting AI you run locally with the Claude Code CLI.**
 
-NumeraAI Lite is a careful, local-first bookkeeper. It keeps one plain-text ledger
+Numera Solo is a careful, local-first bookkeeper. It keeps one plain-text ledger
 on your machine, reasons in real double-entry, and never writes to your books
 without showing you the entry and getting a yes. No cloud, no account, no data
 leaving your laptop. Free forever.
@@ -11,7 +11,7 @@ It is the open-source little sibling of [NumeraAI](https://anishfyi.github.io/nu
 - the full AI accountant that does the whole month-end close and writes back to
 QuickBooks, Xero, Sage and NetSuite with a tamper-evident audit chain.
 
-> **Lite does the everyday bookkeeping on a local file. The full NumeraAI does the
+> **Solo does the everyday bookkeeping on a local file. The full NumeraAI does the
 > close on your real ledgers.** See the difference: https://anishfyi.github.io/numera
 
 ## What it does
@@ -36,7 +36,7 @@ to the ledger after you say yes.
    ```bash
    git clone https://github.com/anishfyi/numera.git
    mkdir -p ~/.claude/skills
-   cp -r numera/skill/numera-lite ~/.claude/skills/
+   cp -r numera/skill/numera-solo ~/.claude/skills/
    ```
 
 3. **(Recommended) Add the trove layer for memory** so it keeps your chart of
@@ -62,16 +62,16 @@ to the ledger after you say yes.
 
 ## How it works
 
-NumeraAI Lite is a [Claude Code skill](https://docs.claude.com/claude-code) -
-a folder of instructions plus a bundled knowledge **trove** (`skill/numera-lite/`).
+Numera Solo is a [Claude Code skill](https://docs.claude.com/claude-code) -
+a folder of instructions plus a bundled knowledge **trove** (`skill/numera-solo/`).
 Claude Code loads it when you ask for bookkeeping and acts as your bookkeeper
 against a local `ledger.csv`.
 
-The skill ships a knowledge trove at `skill/numera-lite/trove/` (built in the
+The skill ships a knowledge trove at `skill/numera-solo/trove/` (built in the
 [trove](https://github.com/anishfyi/trove) format: an `INDEX.md` plus one markdown
 file per topic in `entries/`) covering accounting fundamentals, the financial
 statements, the month-end close, US taxation, sales tax / VAT, and two accounting
-platforms - **QuickBooks Online** and **Sage Intacct**. Lite reads the relevant
+platforms - **QuickBooks Online** and **Sage Intacct**. Solo reads the relevant
 entry before reasoning about a topic. Separately, the optional **trove plugin**
 gives it durable memory of *your* chart of accounts and vendor coding rules across
 sessions.
@@ -80,7 +80,7 @@ There is no server and no database. Your ledger is a CSV you own.
 
 ## Honest limits
 
-Lite is a bookkeeper's assistant, not a filing service or a licensed accountant.
+Solo is a bookkeeper's assistant, not a filing service or a licensed accountant.
 It does not file taxes, does not write to live accounting platforms, and does not
 replace professional sign-off. For the full close, multi-platform write-back, and
 an audit-sealed trust layer, that is the paid
