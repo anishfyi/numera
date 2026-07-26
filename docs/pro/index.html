@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Numera Pro · the whole close, on your real ledgers</title>
+<meta name="description" content="Numera Pro closes your books on the ledgers you already keep. Deep integration with QuickBooks, Xero, Sage, NetSuite and Dynamics, a console you run more agents from, and a tamper-evident audit chain on every write. $199 a month.">
+<link rel="canonical" href="https://numera.velofy.co/pro/">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/numera-mark.svg">
+<meta name="theme-color" content="#0F0E0C">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Numera">
+<meta property="og:url" content="https://numera.velofy.co/pro/">
+<meta property="og:title" content="Numera Pro · the whole close, on your real ledgers">
+<meta property="og:description" content="Deep integration with any accounting software, a console you run more agents from, and a tamper-evident audit chain on every write. $199 a month.">
+<meta property="og:image" content="https://numera.velofy.co/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Numera Pro · the whole close, on your real ledgers">
+<meta name="twitter:description" content="Deep integration with any accounting software. $199 a month.">
+<meta name="twitter:image" content="https://numera.velofy.co/assets/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../numera.css">
+<script>
+  (function(){
+    if(localStorage.getItem('numera-theme') === 'dark'){ document.documentElement.dataset.theme = 'dark'; }
+    window.numeraTheme = function(){
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      if(next === 'dark'){ root.dataset.theme = 'dark'; } else { delete root.dataset.theme; }
+      localStorage.setItem('numera-theme', next);
+    };
+  })();
+</script>
+<style>
+.wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter); }
+.section{ padding:var(--s9) 0; border-top:1px solid var(--line-2); scroll-margin-top:90px; }
+.eyebrow{ font-family:var(--f-data); font-size:11px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--text-3); }
+.h2{ font-family:var(--f-display); font-weight:780; letter-spacing:-.025em; line-height:1.04;
+  font-size:clamp(27px,3.6vw,44px); margin:var(--s3) 0 var(--s4); }
+.note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2); max-width:62ch; line-height:1.6; }
+.row{ display:flex; flex-wrap:wrap; gap:var(--s3); }
+
+.lede{ padding:112px 0 var(--s7); }
+.h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:1.0;
+  font-size:clamp(34px,5.4vw,68px); margin:var(--s3) 0 var(--s4); max-width:17ch; }
+.h-sub{ font-size:clamp(15px,1.25vw,18px); color:var(--text-2); max-width:58ch; line-height:1.6; }
+
+.grid3{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); }
+@media(min-width:900px){ .grid3{ grid-template-columns:repeat(3,1fr); } }
+.card{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
+  box-shadow:var(--shadow-1); padding:var(--s5); min-width:0; }
+.card h3{ font-family:var(--f-display); font-size:19px; letter-spacing:-.015em; margin-bottom:var(--s2); }
+.card p{ font-size:14.5px; color:var(--text-2); line-height:1.6; }
+
+.plat{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; margin-top:var(--s5); }
+.plat div{ font-family:var(--f-data); font-size:13px; color:var(--text-2);
+  border:1px solid var(--line-2); border-radius:var(--r-m); padding:11px 13px; background:var(--bg-raised); }
+.plat div b{ color:var(--text); font-weight:600; }
+
+.steps{ list-style:none; counter-reset:s; margin-top:var(--s5); display:grid; gap:var(--s3); max-width:70ch; }
+.steps li{ counter-increment:s; position:relative; padding-left:44px; font-size:15px; color:var(--text-2); line-height:1.6; }
+.steps li::before{ content:counter(s); position:absolute; left:0; top:-1px; width:27px; height:27px;
+  display:grid; place-items:center; border-radius:999px; background:var(--bg-inset);
+  border:1px solid var(--line-2); font-family:var(--f-data); font-size:12px; color:var(--text); }
+.steps li b{ color:var(--text); font-weight:600; }
+
+.priceband{ background:var(--bg-raised); border:1px solid var(--ok-line); border-radius:var(--r-l);
+  box-shadow:var(--shadow-2); padding:var(--s6); margin-top:var(--s6); max-width:640px; }
+.priceband .amt{ font-family:var(--f-display); font-weight:800; letter-spacing:-.03em;
+  font-size:clamp(38px,5vw,54px); margin:var(--s2) 0 4px; }
+.priceband .amt small{ font-size:17px; font-weight:500; color:var(--text-3); letter-spacing:0; }
+.priceband ul{ list-style:none; margin:var(--s4) 0 var(--s5); display:grid; gap:10px; }
+.priceband li{ font-size:14.5px; color:var(--text-2); display:flex; gap:9px; line-height:1.5; }
+.priceband li::before{ content:"✓"; color:var(--ok); flex:none; }
+
+.compare{ width:100%; border-collapse:collapse; margin-top:var(--s5); font-size:14.5px; }
+.compare th, .compare td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-2); }
+.compare th{ font-family:var(--f-data); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); font-weight:500; }
+.compare td:first-child{ color:var(--text); }
+.compare td{ color:var(--text-2); }
+.compare .yes{ color:var(--ok); font-weight:600; }
+.compare .no{ color:var(--text-3); }
+.tablewrap{ overflow-x:auto; }
+
+@media(max-width:760px){ nav.primary{ display:none; } header.site .header-cta .btn{ display:inline-flex; padding:9px 14px; } }
+</style>
+</head>
+<body id="top">
+
+<header class="site">
+  <a href="../" class="wordmark">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></a>
+  <nav class="primary" aria-label="Primary">
+    <a href="../#solo">Solo</a>
+    <a href="./">Pro</a>
+    <a href="#how">How it works</a>
+    <a href="https://github.com/anishfyi/numera">GitHub</a>
+  </nav>
+  <div class="header-cta">
+    <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark">◐</button>
+    <a class="btn btn-primary" href="#price">Get Numera Pro <span class="glyph">↗</span></a>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap lede">
+  <span class="eyebrow">NUMERA PRO</span>
+  <h1 class="h-big">The whole close, on the ledgers you already keep.</h1>
+  <p class="h-sub">Numera Pro reconciles, codes, posts the journals, preps the VAT and signs the period off. Every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. No migration, no handing over control.</p>
+  <div class="row" style="margin-top:var(--s6)">
+    <a class="btn btn-primary" href="#price">$199 a month <span class="glyph">↗</span></a>
+    <a class="btn btn-secondary" href="../">Start free with Solo</a>
+  </div>
+</section>
+
+<section class="wrap section" id="how">
+  <span class="eyebrow">01 · HOW IT WORKS</span>
+  <h2 class="h2">Algorithmic first.<br>A model only for the residue.</h2>
+  <p class="note">Parsing, categorizing, reconciling and double-entry balancing run in plain code, so they are instant, free and identical every time. A model is asked only about the handful of rows the rules cannot resolve, and every answer you approve becomes a rule. Cost falls as volume rises instead of tracking it.</p>
+
+  <ol class="steps">
+    <li><b>Drop a file.</b> A bank statement, an invoice, a CSV export. Parsing is deterministic.</li>
+    <li><b>Rules run first.</b> Your vendor map and coding rules resolve most lines for free.</li>
+    <li><b>The residue escalates.</b> Only the genuinely unclear rows reach a model, with the ledger context attached.</li>
+    <li><b>You approve.</b> The entry is shown balanced to the penny, with the resulting account balances.</li>
+    <li><b>It posts, then seals.</b> The write goes to your real ledger and onto a hash-chained audit log recording who prepared it and who confirmed it.</li>
+    <li><b>It learns.</b> Every approved resolution becomes a rule, so next month it is free again.</li>
+  </ol>
+</section>
+
+<section class="wrap section" id="integrations">
+  <span class="eyebrow">02 · INTEGRATION</span>
+  <h2 class="h2">Deep integration with any accounting software.</h2>
+  <p class="note">Numera carries a documented model of every platform it writes to: how it authenticates and what it rate limits, its entity model, its query surface, and the specific write behaviours that quietly corrupt a ledger. This is the part everyone underestimates. An update that silently wipes the fields you omitted destroys a set of books far faster than a bad categorization does.</p>
+
+  <div class="plat">
+    <div><b>QuickBooks Online</b></div>
+    <div><b>QuickBooks Desktop</b></div>
+    <div><b>Xero</b></div>
+    <div><b>NetSuite</b></div>
+    <div><b>Sage Intacct</b></div>
+    <div><b>Sage 300</b></div>
+    <div><b>Sage 300 CRE</b></div>
+    <div><b>Sage 50</b></div>
+    <div><b>Dynamics 365 BC</b></div>
+  </div>
+
+  <p class="note" style="margin-top:var(--s5)">Not on the list? Numera builds the model from that vendor's own documentation before it writes anything, in a fixed order: auth and limits, entities, queries, writes and sharp edges, then how it all maps back to double entry. The same procedure is open source in <a href="https://github.com/anishfyi/numera/blob/main/skill/numera-solo/PLATFORM-PLAYBOOK.md">Numera Solo</a>.</p>
+</section>
+
+<section class="wrap section" id="console">
+  <span class="eyebrow">03 · THE CONSOLE</span>
+  <h2 class="h2">Where an accountant runs the harder work.</h2>
+  <p class="note">The console is the cockpit for a close: bank reconciliation, recurring entries, fixed assets, FX, VAT, sign-off and the close pack. From it you run two further agents on the work that does not fit a rule, so the complicated accounting gets delegated rather than done by hand.</p>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Propose, confirm, seal</h3>
+      <p>Nothing reaches your ledger without an explicit yes. Every entry is read back line by line after posting, then sealed.</p>
+    </div>
+    <div class="card">
+      <h3>Tamper-evident chain</h3>
+      <p>Each write is hash-chained to the one before it, recording who prepared and who confirmed. A number that moved can always be explained.</p>
+    </div>
+    <div class="card">
+      <h3>Your credentials stay put</h3>
+      <p>Runs on your machine or your cloud. Your books and your keys never leave the box they live in.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="compare">
+  <span class="eyebrow">04 · SOLO OR PRO</span>
+  <h2 class="h2">What the price actually buys.</h2>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead><tr><th>&nbsp;</th><th>Numera Solo</th><th>Numera Pro</th></tr></thead>
+      <tbody>
+        <tr><td>Local double-entry bookkeeping</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Categorize and reconcile</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>P&amp;L and balance sheet</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Reason about any platform from its docs</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Authenticated write-back to your ledger</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Curated per-platform failure handling</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>The full month-end close</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>The console, and two more agents</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Tamper-evident audit chain</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Price</td><td>Free forever</td><td>$199 / month</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="wrap section" id="price">
+  <span class="eyebrow">05 · PRICING</span>
+  <h2 class="h2">One price. Monthly. That is the whole thing.</h2>
+  <p class="note">No tiers, no add-ons, no per-seat maths, no annual lock-in. Cancel whenever.</p>
+
+  <div class="priceband">
+    <span class="eyebrow">Numera Pro</span>
+    <div class="amt">$199<small> / month</small></div>
+    <ul>
+      <li>The full month-end close</li>
+      <li>The console, where you run two more agents on the harder accounting</li>
+      <li>Deep integration with any accounting software</li>
+      <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
+      <li>Propose to confirm to seal, on every write</li>
+      <li>Tamper-evident audit chain</li>
+    </ul>
+    <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro">Get Numera Pro <span class="glyph">↗</span></a>
+  </div>
+
+  <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <span class="wordmark" style="font-size:20px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
+    <span>Refuse to be unreconciled.</span>
+    <span>&copy;2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
