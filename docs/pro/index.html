@@ -100,18 +100,6 @@
 .access-badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--ok); flex:none; }
 @media(max-width:760px){ .access-badge{ display:none; } }
 
-/* the gate panel */
-.gate{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
-  box-shadow:var(--shadow-1); padding:var(--s6); margin-top:var(--s6); max-width:720px; }
-.gate .lockrow{ display:flex; align-items:center; gap:11px; margin-bottom:var(--s3); }
-.gate .lockrow .pill{ font-family:var(--f-data); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--ok); background:var(--ok-soft); border:1px solid var(--ok-line); border-radius:999px; padding:4px 11px; }
-.gate h3{ font-family:var(--f-display); font-size:23px; letter-spacing:-.02em; margin-bottom:var(--s2); }
-.gate p{ font-size:15px; color:var(--text-2); line-height:1.6; }
-.gate ol{ margin:var(--s4) 0 var(--s5) 20px; display:grid; gap:9px; }
-.gate li{ font-size:14.5px; color:var(--text-2); line-height:1.55; }
-.gate li b{ color:var(--text); font-weight:600; }
-.gate-note{ margin-top:var(--s4); font-size:13.5px; color:var(--text-3); }
 
 .compare{ width:100%; border-collapse:collapse; margin-top:var(--s5); font-size:14.5px; }
 .compare th, .compare td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-2); }
@@ -133,17 +121,17 @@
     <a href="../#solo">Solo</a>
     <a href="./">Pro</a>
     <a href="#how">How it works</a>
-    <a href="#access">Access</a>
+    <a href="https://numera-console.velofy.co/login.html">Investors</a>
     <a href="https://github.com/anishfyi/numera">GitHub</a>
   </nav>
   <div class="header-cta">
     <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark">◐</button>
-    <a class="btn btn-secondary" href="#access" data-console-link="login">Console login</a>
+    <a class="btn btn-secondary" href="https://numera-console.velofy.co/login.html">Investor Access</a>
     <a class="btn btn-primary" href="#price">Get Numera Pro <span class="glyph">↗</span></a>
   </div>
 </header>
 
-<a class="access-badge" href="#access" title="The console is gated while Numera Pro is in private access">
+<a class="access-badge" href="https://numera-console.velofy.co/login.html" title="Read-only review console on demo data">
   <span class="dot" aria-hidden="true"></span>Investor access only
 </a>
 
@@ -281,32 +269,7 @@
   <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
 </section>
 
-<section class="wrap section" id="access">
-  <span class="eyebrow">06 · CONSOLE ACCESS</span>
-  <h2 class="h2">The console is gated.</h2>
-  <p class="note">Numera Pro ships as a container you run yourself, not as a public SaaS URL. That is the same local-first decision the rest of the product is built on: your books and your platform credentials never leave a machine you control. So there is no open sign-up here, and there never will be.</p>
-  <p class="note" style="margin-top:var(--s3)">What there is, for people evaluating Numera, is a <b>read-only console on demo data</b> at <a href="https://numera-console.velofy.co/login.html">numera-console.velofy.co</a>. Every page of the real console, every figure fabricated, nothing changeable.</p>
 
-  <div class="gate">
-    <div class="lockrow">
-      <span class="pill">Investor access only</span>
-    </div>
-    <h3>Reviewing Numera?</h3>
-    <p>Open the console with the credentials you were sent. If you do not have them, ask and they come back in one reply. Three ways in, whichever suits you:</p>
-    <ol>
-      <li><b>The review console.</b> Every page of the real product on fabricated demo data, read only, so nothing can be changed and nothing real is exposed.</li>
-      <li><b>Run it yourself.</b> One container, one command. You keep the keys and the data never leaves your machine.</li>
-      <li><b>A live walkthrough.</b> Thirty minutes, a real month-end close, start to sealed.</li>
-    </ol>
-    <div class="row">
-      <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html">Open the console <span class="glyph">↗</span></a>
-      <a class="btn btn-secondary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro%20-%20console%20access">Request credentials</a>
-    </div>
-    <p class="gate-note" data-console-live hidden>Reviewer accounts are <b>read only</b>: you can open every page and inspect the data, and writes are disabled on the account.</p>
-  </div>
-
-  <p class="note" style="margin-top:var(--s5)">Numera Solo needs none of this. It is open source, needs no account, and runs on your laptop today: <a href="https://github.com/anishfyi/numera">github.com/anishfyi/numera</a>.</p>
-</section>
 
 </main>
 
@@ -343,30 +306,6 @@
 </footer>
 
 <script>
-  // ---------------------------------------------------------------------
-  // THE ONE LINE TO CHANGE WHEN THE CONSOLE GOES LIVE.
-  // Set this to the console's login URL, e.g. "https://numera-pro.fly.dev/accounts/login/".
-  // Leave it empty while the console is not hosted: every console link then
-  // falls back to the #access section, which explains the gate. That fallback
-  // is the href already in the HTML, so this degrades correctly with no JS.
-  // ---------------------------------------------------------------------
-  var CONSOLE_URL = "https://numera-console.velofy.co/login.html";
-
-  (function () {
-    if (!CONSOLE_URL) return;
-    document.querySelectorAll('[data-console-link]').forEach(function (a) {
-      a.href = CONSOLE_URL;
-      a.setAttribute('rel', 'noopener');
-      if (a.dataset.consoleLink === 'login') a.textContent = 'Console login';
-    });
-    document.querySelectorAll('[data-console-live]').forEach(function (el) {
-      el.hidden = false;
-    });
-    document.querySelectorAll('[data-console-pending]').forEach(function (el) {
-      el.hidden = true;
-    });
-  })();
-
   // The marketing layout in the app renders this clock with Alpine. The static
   // site has no Alpine, so it is plain JS here. Same output, no dependency.
   (function () {
