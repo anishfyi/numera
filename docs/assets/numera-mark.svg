@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Numera">
+  <title>Numera</title>
+  <rect width="256" height="256" rx="30" fill="#0F0E0C"/>
+  <path d="M172 72H84l46 56-46 56h88"
+        fill="none" stroke="#F6F4EE" stroke-width="17"
+        stroke-linecap="square" stroke-linejoin="miter"/>
+  <circle cx="202" cy="202" r="9" fill="#B12E1E"/>
+</svg>
