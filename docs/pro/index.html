@@ -71,14 +71,21 @@
   border:1px solid var(--line-2); font-family:var(--f-data); font-size:12px; color:var(--text); }
 .steps li b{ color:var(--text); font-weight:600; }
 
-.priceband{ background:var(--bg-raised); border:1px solid var(--ok-line); border-radius:var(--r-l);
-  box-shadow:var(--shadow-2); padding:var(--s6); margin-top:var(--s6); max-width:640px; }
-.priceband .amt{ font-family:var(--f-display); font-weight:800; letter-spacing:-.03em;
-  font-size:clamp(38px,5vw,54px); margin:var(--s2) 0 4px; }
-.priceband .amt small{ font-size:17px; font-weight:500; color:var(--text-3); letter-spacing:0; }
-.priceband ul{ list-style:none; margin:var(--s4) 0 var(--s5); display:grid; gap:10px; }
-.priceband li{ font-size:14.5px; color:var(--text-2); display:flex; gap:9px; line-height:1.5; }
-.priceband li::before{ content:"✓"; color:var(--ok); flex:none; }
+/* two plans here, not the homepage's three, so override the grid */
+.prices{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); align-items:stretch; }
+@media(min-width:880px){ .prices{ grid-template-columns:1fr 1fr; } }
+.price{ position:relative; background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
+  box-shadow:var(--shadow-1); padding:var(--s6); display:flex; flex-direction:column; min-width:0; }
+.price.feature{ border-color:var(--ok-line); box-shadow:var(--shadow-2); }
+.price .pname{ font-family:var(--f-data); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
+.price .amt{ font-family:var(--f-display); font-weight:800; letter-spacing:-.03em; font-size:clamp(36px,4.4vw,50px); margin:var(--s3) 0 2px; }
+.price .amt small{ font-size:16px; font-weight:500; color:var(--text-3); letter-spacing:0; }
+.price .sub2{ font-size:13.5px; color:var(--text-3); min-height:38px; }
+.price ul{ list-style:none; margin:var(--s4) 0 var(--s5); display:grid; gap:10px; }
+.price li{ font-size:14px; color:var(--text-2); display:flex; gap:9px; line-height:1.45; }
+.price li::before{ content:"✓"; color:var(--ok); flex:none; }
+.price .btn{ margin-top:auto; }
+.pfoot{ margin-top:var(--s5); font-size:13.5px; color:var(--text-3); }
 
 .compare{ width:100%; border-collapse:collapse; margin-top:var(--s5); font-size:14.5px; }
 .compare th, .compare td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-2); }
@@ -200,22 +207,44 @@
 
 <section class="wrap section" id="price">
   <span class="eyebrow">05 · PRICING</span>
-  <h2 class="h2">One price. Monthly. That is the whole thing.</h2>
-  <p class="note">No tiers, no add-ons, no per-seat maths, no annual lock-in. Cancel whenever.</p>
+  <h2 class="h2">Subscribe to it,<br>or hire it by the hour.</h2>
+  <p class="note">One plan with everything in it, billed monthly. No tiers, no add-ons, no per-seat maths, no annual lock-in. Or skip the subscription entirely and pay only for the work the agent actually does.</p>
 
-  <div class="priceband">
-    <span class="eyebrow">Numera Pro</span>
-    <div class="amt">$199<small> / month</small></div>
-    <ul>
-      <li>The full month-end close</li>
-      <li>The console, where you run two more agents on the harder accounting</li>
-      <li>Deep integration with any accounting software</li>
-      <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
-      <li>Propose to confirm to seal, on every write</li>
-      <li>Tamper-evident audit chain</li>
-    </ul>
-    <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro">Get Numera Pro <span class="glyph">↗</span></a>
+  <div class="prices">
+    <!-- Subscribe -->
+    <div class="price feature">
+      <span class="pname">Numera Pro</span>
+      <div class="amt">$199<small> / month</small></div>
+      <p class="sub2">Everything included. Cancel whenever.</p>
+      <ul>
+        <li>The full month-end close</li>
+        <li>The console, where you run two more agents on the harder accounting</li>
+        <li>Deep integration with any accounting software</li>
+        <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
+        <li>Propose to confirm to seal, on every write</li>
+        <li>Tamper-evident audit chain</li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:anishfyi@gmail.com?subject=Numera%20Pro">Get Numera Pro <span class="glyph">↗</span></a>
+    </div>
+
+    <!-- Hire -->
+    <div class="price">
+      <span class="pname">Hire the agent</span>
+      <div class="amt">$9<small> / hour</small></div>
+      <p class="sub2">Rather pay for output than a subscription? Put Numera on the clock.</p>
+      <ul>
+        <li>Pay only for hours actually worked</li>
+        <li>The full agent, on demand</li>
+        <li>Good for a one-off cleanup, a backlog, or a single close</li>
+        <li>Same propose to confirm to seal discipline</li>
+        <li>Same audit chain on every write</li>
+        <li>No monthly commitment</li>
+      </ul>
+      <a class="btn btn-secondary" href="mailto:anishfyi@gmail.com?subject=Numera%20-%20hire%20the%20agent%20by%20the%20hour">Hire Numera <span class="glyph">↗</span></a>
+    </div>
   </div>
+
+  <p class="pfoot">Both run local-first: you confirm every write, and your books never leave the box.</p>
 
   <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
 </section>
@@ -223,12 +252,58 @@
 </main>
 
 <footer class="site">
-  <div class="wrap foot">
-    <span class="wordmark" style="font-size:20px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
-    <span>Refuse to be unreconciled.</span>
-    <span>&copy;2026</span>
+  <div class="foot-grid">
+    <div class="foot-links">
+      <a href="#integrations">Integrations</a>
+      <a href="#console">Console</a>
+      <a href="#how">How it works</a>
+      <a href="../">Numera Solo</a>
+      <a href="https://github.com/anishfyi/numera">GitHub</a>
+    </div>
+    <div class="foot-side">
+      <p>Runs on your cloud or your laptop, same container.<br>Algorithmic first, a model only for the residue.<br>Your credentials never leave the box.</p>
+    </div>
+  </div>
+
+  <div class="foot-meta">
+    <div class="clock">
+      <b id="footClock"></b><br>
+      <span id="footDate"></span>
+    </div>
+    <div class="center">
+      <a href="#top">Back to top ↑</a><br>
+      Closing books for Q3 '2026
+    </div>
+    <div class="right">&copy;2026 Numera</div>
+  </div>
+
+  <div class="halftone">
+    <span class="wordmark" style="font-size:24px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
+    <span class="quote"><span class="bracket">「</span>Refuse to be unreconciled.<span class="bracket">」</span></span>
   </div>
 </footer>
+
+<script>
+  // The marketing layout in the app renders this clock with Alpine. The static
+  // site has no Alpine, so it is plain JS here. Same output, no dependency.
+  (function () {
+    var clock = document.getElementById('footClock');
+    var date = document.getElementById('footDate');
+    if (!clock || !date) return;
+    function tick() {
+      var n = new Date();
+      var off = n.getTimezoneOffset();
+      var sign = off <= 0 ? '+' : '−';
+      var hrs = String(Math.abs(off / 60)).padStart(2, '0');
+      clock.textContent = 'Local ' + n.toLocaleTimeString('en-GB');
+      date.textContent = n.toLocaleDateString('en-GB',
+        { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' })
+        + ' (GMT' + sign + hrs + ')';
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
 
 </body>
 </html>
