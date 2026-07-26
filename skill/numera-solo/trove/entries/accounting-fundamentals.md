@@ -74,4 +74,4 @@ Professional fees, Depreciation.
 ## Corrections stay auditable
 Never edit a posted entry. To fix a mistake, post a **reversing entry** (swap the
 original debits and credits) citing the original, then post the correct entry. The
-trail stays intact. This is the discipline NumeraAI (and Lite) enforces on every write.
+trail stays intact. This is the discipline NumeraAI (and Solo) enforces on every write.

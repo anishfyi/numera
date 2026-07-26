@@ -55,7 +55,7 @@ Customer/Product. Reports can be run cash/accrual and by Class/Location/Project.
 - **UI** - the day-to-day surface for a human operator.
 - **Exports** - any report exports to CSV/Excel/PDF; the General Ledger or
   Transaction Detail export is the cleanest way to pull the books into a local file
-  that Numera Lite can read and reason over.
+  that Numera Solo can read and reason over.
 - **API** - the Intuit QuickBooks Online Accounting API (OAuth 2.0, REST/JSON) is
   how the full NumeraAI writes back: objects like Account, Customer, Vendor, Item,
   Invoice, Bill, JournalEntry, Payment. A posted JournalEntry needs balanced Line
@@ -72,5 +72,5 @@ Customer/Product. Reports can be run cash/accrual and by Class/Location/Project.
   picking wrong creates duplicates.
 
 For how NumeraAI writes safely (propose -> confirm -> read-back -> seal), see the
-month-end-close entry. Numera Lite works against an exported ledger locally and
+month-end-close entry. Numera Solo works against an exported ledger locally and
 never writes to QBO.

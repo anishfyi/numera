@@ -1,8 +1,8 @@
-# Numera Lite Trove
+# Numera Solo Trove
 
-> **Numera Lite - a Lite AI Agent by anishfyi.** https://github.com/anishfyi/numera
+> **Numera Solo - a Solo AI Agent by anishfyi.** https://github.com/anishfyi/numera
 >
-> A bundled knowledge trove for the Numera Lite accounting skill: decent working
+> A bundled knowledge trove for the Numera Solo accounting skill: decent working
 > knowledge of two accounting platforms (Sage Intacct, QuickBooks Online) and of
 > accounting and taxation, as plain markdown for easy reference by Claude Code.
 > One file per topic in `entries/`. Built in the [trove](https://github.com/anishfyi/trove)
@@ -23,9 +23,9 @@
 
 ---
 
-_How Numera Lite uses this: read the entry that matches the task before acting -
+_How Numera Solo uses this: read the entry that matches the task before acting -
 e.g. `accounting-fundamentals` before posting any entry, `quickbooks-online` or
 `sage-intacct` when the user's books live there, `month-end-close` when closing a
 period, and the taxation entries when sales tax / VAT / filings come up. Verify any
-figure that changes yearly against the primary source. Lite is a bookkeeper's
+figure that changes yearly against the primary source. Solo is a bookkeeper's
 assistant, not a licensed accountant or a filing service._
