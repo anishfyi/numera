@@ -1,1 +1,8 @@
 .DS_Store
+
+# Vendor documentation fetched by scripts/fetch-docs.sh lives in the user's
+# ~/.numera/docs cache, never in the repo. This entry is belt and braces in case
+# anyone points NUMERA_HOME at the working tree: we redistribute nothing a
+# vendor owns.
+.numera/
+docs-cache/

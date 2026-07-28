@@ -1,0 +1,192 @@
+[
+  {
+    "zip": "10001",
+    "city": "New York",
+    "county": "New York",
+    "state": "NY",
+    "state_rate": 4.0,
+    "local_rate_approx": 4.875,
+    "combined_rate_approx": 8.875,
+    "note": "NYC: 4.5% city + 0.375% MCTD transit surcharge on top of 4% state. Destination-based. Uniform across NYC ZIPs."
+  },
+  {
+    "zip": "90012",
+    "city": "Los Angeles",
+    "county": "Los Angeles",
+    "state": "CA",
+    "state_rate": 7.25,
+    "local_rate_approx": 2.5,
+    "combined_rate_approx": 9.75,
+    "note": "CA is mixed-sourcing: state/county/city origin-based, district taxes destination-based. LA County district add-ons push downtown LA to ~9.75%; other LA-county ZIPs differ."
+  },
+  {
+    "zip": "60601",
+    "city": "Chicago",
+    "county": "Cook",
+    "state": "IL",
+    "state_rate": 6.25,
+    "local_rate_approx": 4.0,
+    "combined_rate_approx": 10.25,
+    "note": "Cook County + Chicago + RTA transit district stack to 10.25%, among the highest big-city rates. IL intrastate origin-based; remote sellers destination-based (2026 rules tightened)."
+  },
+  {
+    "zip": "77002",
+    "city": "Houston",
+    "county": "Harris",
+    "state": "TX",
+    "state_rate": 6.25,
+    "local_rate_approx": 2.0,
+    "combined_rate_approx": 8.25,
+    "note": "TX caps local add-ons at 2.0% (city 1% + Houston MTA transit 1%). TX is origin-based for intrastate sales. 8.25% is the statewide max."
+  },
+  {
+    "zip": "33131",
+    "city": "Miami",
+    "county": "Miami-Dade",
+    "state": "FL",
+    "state_rate": 6.0,
+    "local_rate_approx": 1.0,
+    "combined_rate_approx": 7.0,
+    "note": "FL 6% state + Miami-Dade 1% discretionary surtax. FL surtax applies to first $5,000 of a single tangible item on some categories. Destination-based."
+  },
+  {
+    "zip": "98101",
+    "city": "Seattle",
+    "county": "King",
+    "state": "WA",
+    "state_rate": 6.5,
+    "local_rate_approx": 3.75,
+    "combined_rate_approx": 10.25,
+    "note": "WA 6.5% state + King County/Seattle + Sound Transit RTA district = ~10.25-10.35%. Destination-based. Some downtown blocks carry extra stadium/transit add-ons."
+  },
+  {
+    "zip": "19901",
+    "city": "Dover",
+    "county": "Kent",
+    "state": "DE",
+    "state_rate": 0.0,
+    "local_rate_approx": 0.0,
+    "combined_rate_approx": 0.0,
+    "note": "NOMAD state. No sales or use tax for buyers. DE instead levies a seller-side gross receipts tax. Every DE ZIP = 0%."
+  },
+  {
+    "zip": "97201",
+    "city": "Portland",
+    "county": "Multnomah",
+    "state": "OR",
+    "state_rate": 0.0,
+    "local_rate_approx": 0.0,
+    "combined_rate_approx": 0.0,
+    "note": "NOMAD state. No state or local sales tax anywhere in OR. Every OR ZIP = 0%."
+  },
+  {
+    "zip": "33480",
+    "city": "Palm Beach",
+    "county": "Palm Beach",
+    "state": "FL",
+    "state_rate": 6.0,
+    "local_rate_approx": 0.5,
+    "combined_rate_approx": 6.5,
+    "note": "FL 6% + Palm Beach County 0.5% surtax. Lower than Miami-Dade. FL county surtaxes vary widely (0%-1.5%), so FL ZIP rates differ by county."
+  },
+  {
+    "zip": "80202",
+    "city": "Denver",
+    "county": "Denver",
+    "state": "CO",
+    "state_rate": 2.9,
+    "local_rate_approx": 6.25,
+    "combined_rate_approx": 9.15,
+    "note": "CO has the lowest state rate (2.9%) but heavy local stacking: Denver city + RTD transit + cultural facilities district. CO is a notorious home-rule/multi-jurisdiction state; ZIP rates are especially unreliable here."
+  },
+  {
+    "zip": "30303",
+    "city": "Atlanta",
+    "county": "Fulton",
+    "state": "GA",
+    "state_rate": 4.0,
+    "local_rate_approx": 4.9,
+    "combined_rate_approx": 8.9,
+    "note": "GA 4% + Fulton County LOST/SPLOST + Atlanta MARTA transit + city add-ons = ~8.9%. GA ZIPs frequently span multiple counties (classic multi-jurisdiction problem)."
+  },
+  {
+    "zip": "02108",
+    "city": "Boston",
+    "county": "Suffolk",
+    "state": "MA",
+    "state_rate": 6.25,
+    "local_rate_approx": 0.0,
+    "combined_rate_approx": 6.25,
+    "note": "MA has NO local sales taxes; the 6.25% state rate is uniform statewide. One of the few states where ZIP = state rate everywhere. (Meals tax is separate.)"
+  },
+  {
+    "zip": "85001",
+    "city": "Phoenix",
+    "county": "Maricopa",
+    "state": "AZ",
+    "state_rate": 5.6,
+    "local_rate_approx": 3.5,
+    "combined_rate_approx": 9.1,
+    "note": "AZ 5.6% state + Maricopa County 0.7% + Phoenix city TPT. Phoenix raised its city rate ~0.5% (8.6% -> 9.1%) effective Oct 2025, so 9.1% is the current 2026 combined rate. AZ uses Transaction Privilege Tax (seller-side), origin/special sourcing."
+  },
+  {
+    "zip": "73102",
+    "city": "Oklahoma City",
+    "county": "Oklahoma",
+    "state": "OK",
+    "state_rate": 4.5,
+    "local_rate_approx": 4.125,
+    "combined_rate_approx": 8.625,
+    "note": "OK 4.5% state + Oklahoma County + OKC city. OK allows local option up to ~6.5%; OKC combined ~8.625%. OK ZIPs cross county lines often. Verify against OK Tax Commission quarterly rate charts."
+  },
+  {
+    "zip": "70112",
+    "city": "New Orleans",
+    "county": "Orleans Parish",
+    "state": "LA",
+    "state_rate": 5.0,
+    "local_rate_approx": 5.0,
+    "combined_rate_approx": 10.0,
+    "note": "LA has the highest average combined US rate (~10.1%). Orleans Parish local ~5% on top of 5% state = ~10%. LA local sales tax is administered at the parish level, making rooftop accuracy especially important."
+  },
+  {
+    "zip": "87501",
+    "city": "Santa Fe",
+    "county": "Santa Fe",
+    "state": "NM",
+    "state_rate": 4.875,
+    "local_rate_approx": 3.3125,
+    "combined_rate_approx": 8.1875,
+    "note": "NM uses a Gross Receipts Tax (GRT), now destination-based (since Jul 1, 2021). State portion 4.875% + Santa Fe city/county = ~8.19%. NM rates use 4-decimal precision and change frequently."
+  },
+  {
+    "zip": "89101",
+    "city": "Las Vegas",
+    "county": "Clark",
+    "state": "NV",
+    "state_rate": 6.85,
+    "local_rate_approx": 1.525,
+    "combined_rate_approx": 8.375,
+    "note": "NV 6.85% state (includes mandatory statewide LSST/BCCRT components) + Clark County add-ons = 8.375%. Clark County (Las Vegas) is NV's highest. Destination-based."
+  },
+  {
+    "zip": "99501",
+    "city": "Anchorage",
+    "county": "Anchorage Municipality",
+    "state": "AK",
+    "state_rate": 0.0,
+    "local_rate_approx": 0.0,
+    "combined_rate_approx": 0.0,
+    "note": "NOMAD state: no AK state sales tax. Anchorage levies NO local sales tax = 0%. BUT 100+ other AK localities DO (up to ~7.5%, e.g., Juneau, Wasilla, Kodiak), often collected via the ARSSTC remote-seller commission. AK ZIP rate is purely local."
+  },
+  {
+    "zip": "02903",
+    "city": "Providence",
+    "county": "Providence",
+    "state": "RI",
+    "state_rate": 7.0,
+    "local_rate_approx": 0.0,
+    "combined_rate_approx": 7.0,
+    "note": "RI has NO local sales tax; 7% state rate is uniform statewide (like MA). Included as a second 'state-rate-equals-ZIP-rate' example. Destination-based."
+  }
+]

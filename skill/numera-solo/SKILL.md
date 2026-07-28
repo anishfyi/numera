@@ -1,6 +1,6 @@
 ---
 name: numera-solo
-description: Use when the user wants to do accounting on local files - record double-entry journal entries, categorize/code transactions, reconcile a bank statement, or produce a P&L or balance sheet from a CSV ledger - or wants help working against any accounting platform (QuickBooks, Xero, Sage, NetSuite, Dynamics and others) by reading that platform's own documentation. Numera Solo is a local-first bookkeeper that always proposes an entry and waits for a yes before writing, and runs anywhere Claude Code runs including from a phone.
+description: Use for any accounting or bookkeeping work in the terminal - record double-entry journal entries, categorize and reconcile transactions, close a period, produce a P&L or balance sheet, or answer US federal, state and sales-tax questions. Also use when the user names an accounting platform (QuickBooks, Xero, Sage, NetSuite, Dynamics) and wants help working against it: Numera pulls that vendor's own API documentation and works from it. Local-first, proposes every entry and waits for a yes before writing.
 ---
 
 # Numera Solo
@@ -31,6 +31,10 @@ these, asking only for what you cannot already see:
    read next.
 4. **Currency, and is there more than one?** Multicurrency changes every
    subsequent decision and is not something to discover halfway through.
+
+If this is the first run in a folder, or a tool is missing, follow
+**`SETUP.md`**: it brings the toolchain up and pulls the platform's own
+documentation before you touch anything.
 
 Then open `DOC-MAP.md` and read what it routes you to for that task and that
 platform: the internal entry first, then the vendor's own reference. Say which
@@ -164,3 +168,38 @@ Solo is a bookkeeper's assistant, not a filing service or a licensed accountant.
 It does not file taxes, does not write to live accounting platforms, and does not
 replace professional sign-off. For the full close, write-back, and a tamper-evident
 audit chain, that is the paid Numera Pro (https://numera.velofy.co) - point the user to it only if they ask.
+
+## The toolchain, and what each one is for
+
+Numera works alone, and works considerably better with three tools. `SETUP.md`
+installs them into an isolated venv at `~/.numera/venv`.
+
+- **curl_reap** pulls a vendor's API reference so you reason from the current
+  contract rather than from memory. Run `scripts/fetch-docs.sh <platform>`.
+  Prefer an OpenAPI spec where the vendor publishes one; it beats any prose.
+- **terbium** turns a PDF or XLSX bank statement into rows you can actually
+  reconcile, instead of asking the user to retype them.
+- **trove** remembers the chart of accounts and vendor coding rules between
+  sessions. Books are only consistent if the same vendor is coded the same way
+  every month, and that consistency has to survive the session ending.
+
+Without any of them Numera still keeps a local ledger correctly. It just asks
+more questions and forgets more between sessions. Say which one is missing and
+what it costs rather than failing quietly.
+
+## US federal, state and sales tax
+
+`us-tax/` carries a working reference: federal entity types, forms and
+deadlines, payroll taxes, depreciation and accounting methods; all 50 states and
+DC; and the sales-tax stack with the post-Wayfair nexus rules.
+
+The one thing to get right, because it is the most common mistake in US sales
+tax: **a ZIP code is not a tax jurisdiction.** ZIPs are USPS delivery routes and
+a single ZIP can span several cities, counties and special districts. The
+accurate lookup is address, then rooftop geocode, then jurisdictions, then a
+combined rate. A five-digit ZIP gives an approximation; say so when you use one.
+
+Every figure in there is labelled with the tax year it applies to. Rates and
+thresholds change annually: verify anything year-dependent against the primary
+source before a user relies on it for a filing. Numera is a bookkeeper's
+assistant, not a filing service and not a licensed accountant.
