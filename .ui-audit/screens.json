@@ -1,6 +1,15 @@
 [
-  { "name": "landing", "url": "http://localhost:8777/", "viewport": "1440x900", "theme": "light", "status": "pass" },
-  { "name": "landing", "url": "http://localhost:8777/", "viewport": "390x844",  "theme": "light", "status": "pass" },
-  { "name": "landing", "url": "http://localhost:8777/", "viewport": "1440x900", "theme": "dark",  "status": "pass" },
-  { "name": "landing", "url": "http://localhost:8777/", "viewport": "390x844",  "theme": "dark",  "status": "pass" }
+  { "name": "landing", "url": "/", "viewport": "1440x900", "theme": "light", "status": "pass" },
+  { "name": "landing", "url": "/", "viewport": "1440x900", "theme": "dark",  "status": "pass" },
+  { "name": "landing", "url": "/", "viewport": "768x1024", "theme": "light", "status": "pass" },
+  { "name": "landing", "url": "/", "viewport": "768x1024", "theme": "dark",  "status": "pass" },
+  { "name": "landing", "url": "/", "viewport": "390x844",  "theme": "light", "status": "pass" },
+  { "name": "landing", "url": "/", "viewport": "390x844",  "theme": "dark",  "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "1440x900", "theme": "light", "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "1440x900", "theme": "dark",  "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "1024x800", "theme": "light", "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "768x1024", "theme": "light", "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "768x1024", "theme": "dark",  "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "390x844",  "theme": "light", "status": "pass" },
+  { "name": "pro", "url": "/pro/", "viewport": "390x844",  "theme": "dark",  "status": "pass" }
 ]

@@ -110,7 +110,23 @@
 .compare .no{ color:var(--text-3); }
 .tablewrap{ overflow-x:auto; }
 
-@media(max-width:760px){ nav.primary{ display:none; } header.site .header-cta .btn{ display:inline-flex; padding:9px 14px; } }
+nav.primary a{ white-space:nowrap; }
+/* the full header (5 nav links + toggle + 2 CTAs) needs about 1065px; below
+   that the links wrap or the CTA overflows, so collapse the nav early */
+@media(max-width:1099px){ nav.primary{ display:none; } }
+@media(max-width:760px){
+  header.site .header-cta .btn{ display:inline-flex; padding:9px 14px; }
+  /* wordmark + toggle + one CTA is all that fits on a phone; Investor Access
+     stays reachable from the footer Console link and the badge on wider screens */
+  header.site .header-cta .btn-secondary{ display:none; }
+}
+
+/* gutter fix (same defect the landing page had): the .section and .lede
+   `padding: X 0 Y` shorthands zero the horizontal gutter that .wrap provides,
+   so below 1380px (where the auto margins collapse) every section sat flush
+   at the screen edge. Restore the gutter at all widths. Placed last to win
+   source order. */
+.wrap, .section, .lede{ padding-left:var(--gutter); padding-right:var(--gutter); }
 </style>
 </head>
 <body id="top">
@@ -267,7 +283,7 @@
 
   <p class="pfoot">Both run local-first: you confirm every write, and your books never leave the box.</p>
 
-  <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="https://cal.com/anishfyi/30min">Book a call</a>
+  <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="https://cal.com/anishfyi/30min">Book a call</a>.
       <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
 </section>
 

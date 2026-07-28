@@ -1,45 +1,51 @@
-# UI self-healing loop - REPORT
+# UI self-healing loop - REPORT (pass 2)
 
-**Target:** Numera landing page (`docs/index.html`), the only web UI in this repo.
-**Run:** executed inline (Claude Code drove a real Chromium via Playwright and
-screenshotted every screen x viewport x theme).
+**Target:** the whole static site, `docs/index.html` + `docs/pro/index.html`
+(live at numera.velofy.co and numera.velofy.co/pro).
+**Run:** 2026-07-28, helium (Selenium) headless Chrome driven from Python,
+scroll-stitched full-page captures at 1440 / 1024 / 768 / 390, light + dark,
+24 captures. Fixes verified against a local copy served from `docs/`.
 
 ## Coverage
-| screen | desktop 1440x900 | mobile 390x844 |
-|--------|------------------|----------------|
-| landing - light | pass | pass |
-| landing - dark  | pass | pass |
+| screen | 1440 | 1024 | 768 | 390 |
+|--------|------|------|-----|-----|
+| landing - light | pass | pass | pass | pass |
+| landing - dark  | pass | pass | pass | pass |
+| pro - light | pass | pass | pass (fixed) | pass (fixed) |
+| pro - dark  | pass | pass | pass (fixed) | pass (fixed) |
 
-All 4 entries in `screens.json` are **pass**. None flagged `needs-human`.
+All 13 entries in `screens.json` are **pass**. None flagged `needs-human`.
 
-## Issues fixed (1)
-1. **Full-agent feature list ran full-width (1380px) on desktop** - lines too long,
-   loose, inconsistent with the capped prose. Capped `#full .feat` to `max-width:64ch`
-   (now ~661px). See `issues.md`.
-
-The page was already in good shape (it was hand-tuned earlier this session: hero
-fold, megamark-to-base, mobile overflow fix, mobile header). This pass confirmed
-those held and caught the one remaining readability gap.
+## Issues fixed (4, all on the pro page)
+1. **Zero content gutter below 1380px** - `.section`/`.lede` padding shorthands
+   overrode the `.wrap` gutter; every section sat flush at the screen edge at
+   1024/768/390. Restored `padding-left/right:var(--gutter)` via a trailing rule.
+2. **Header overflow at 761-1099px** - 5 nav links + toggle + 2 CTAs did not fit;
+   173px past the viewport at 768, links wrapping. Nav now hides at
+   `max-width:1099px`, links are `nowrap`.
+3. **Header clipped at phone width** - wordmark + toggle + 2 buttons exceeded
+   390px and cut off the primary CTA. "Investor Access" hides at <=760px;
+   still reachable from the footer Console link.
+4. **Run-together links in the pricing note** - "Book a call Numera Solo is
+   free..." now separated by a period.
 
 ## Verified clean
-- **Zero horizontal overflow** at 1440 / 390 / 360 in both themes.
-- Hero + megamark fold (full NUM∑RA visible with a gap above the base, no clip).
-- Card/pricing rhythm; 2-up/3-up collapse to 1 col on mobile.
-- Light/dark parity; seal-terracotta used only on the seal mark; no theme flash.
-- Hover/focus states present (from numera.css); cards non-interactive.
+- Landing page: no changes needed at any width or theme; the pass-1 fixes hold.
+- Pro page after fixes: zero horizontal overflow everywhere (checked both
+  `scrollWidth` and fixed-element rects, since fixed overflow is invisible to
+  the former), comparison table reflows, footer stacks correctly.
 
 ## Gaps noticed in design-rules.md / the design system itself
-- **Dark-theme `--text-3` is borderline for small text.** Eyebrows, fineprint, and
-  card sub-text use `--text-3` (#767163), which computes ~3.6:1 against the dark
-  surfaces - passes WCAG AA-large but is **below AA (4.5:1)** for normal-size text.
-  This is a shared token in `numera.css` used across the whole product, so I did
-  **not** override it per-page. Recommend lightening `--text-3` in the dark theme
-  (e.g. toward #8a857a) at the design-system level. Flagged, not fixed.
-- The static page has no Alpine; the loop's Alpine-specific checks (x-cloak/x-show/
-  x-for) don't apply here. If a future screen is Alpine-driven, those re-activate.
+- The dark-theme `--text-3` contrast note from pass 1 still stands (flagged,
+  not fixed, design-system level).
+- New rule worth adding: **padding shorthands on `.wrap`ped sections must not
+  re-zero the horizontal gutter** - both pages hit this independently. The
+  pattern to enforce is `padding: X var(--gutter) Y` or a trailing gutter rule.
+- New rule worth adding: **fixed headers need element-rect overflow checks**;
+  `document.scrollWidth` cannot see them.
 
 ## Process note
-The provided `run-ui-loop.sh` driver was **not** runnable here: it invokes
-`claude --dangerously-skip-permissions`, which the Claude Code safety classifier
-hard-blocks (auto-mode bypass). The loop was executed inline instead (same outcome,
-safer). `ui-fix-loop.md` and this `.ui-audit/` state are saved and resumable.
+Pass 1's caveats about giant-canvas captures producing blanks were confirmed
+and worked around with scroll-stitching. Two more headless traps documented in
+`issues.md` (500px minimum window width, ~143px chrome in window height).
+The loop remains resumable from `.ui-audit/`.
