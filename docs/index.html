@@ -335,12 +335,56 @@ claude
 
 <!-- ===== footer ===== -->
 <footer class="site">
-  <div class="wrap foot">
-    <span class="wordmark" style="font-size:20px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
-    <span>Refuse to be unreconciled.</span>
-    <span>&copy;2026</span>
+  <div class="foot-grid">
+    <div class="foot-links">
+      <a href="#solo">Numera Solo</a>
+      <a href="#full">What it does</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://cal.com/anishfyi/30min">Book a call</a>
+      <a href="pro/">Numera Pro</a>
+      <a href="https://github.com/anishfyi/numera">GitHub</a>
+    </div>
+    <div class="foot-side">
+      <p>Runs on your laptop, no server required.<br>Algorithmic first, a model only for the residue.<br>Your books never leave the machine.</p>
+    </div>
+  </div>
+
+  <div class="foot-meta">
+    <div class="clock">
+      <b id="footClock"></b><br>
+      <span id="footDate"></span>
+    </div>
+    <div class="center">
+      <a href="#top">Back to top &uarr;</a><br>
+      Closing books for Q3 '2026
+    </div>
+    <div class="right">&copy;2026 Numera</div>
+  </div>
+
+  <div class="halftone">
+    <span class="wordmark" style="font-size:24px">NUM<span class="sigma">&#8721;</span>RA<span class="ai">AI</span></span>
+    <span class="quote"><span class="bracket">&#12300;</span>Refuse to be unreconciled.<span class="bracket">&#12301;</span></span>
   </div>
 </footer>
 
+<script>
+(function () {
+    var clock = document.getElementById('footClock');
+    var date = document.getElementById('footDate');
+    if (!clock || !date) return;
+    function tick() {
+      var n = new Date();
+      var off = n.getTimezoneOffset();
+      var sign = off <= 0 ? '+' : '\u2212';
+      var hrs = String(Math.abs(off / 60)).padStart(2, '0');
+      clock.textContent = 'Local ' + n.toLocaleTimeString('en-GB');
+      date.textContent = n.toLocaleDateString('en-GB',
+        { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' })
+        + ' (GMT' + sign + hrs + ')';
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
 </body>
 </html>
