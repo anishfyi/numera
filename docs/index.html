@@ -142,8 +142,11 @@
 .price .btn{ margin-top:auto; }
 .pfoot{ text-align:center; margin-top:var(--s5); color:var(--text-3); font-size:13.5px; }
 
-/* ---- footer ---- */
-footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); padding:var(--s7) 0; }
+/* ---- footer ----
+   No padding here. The halftone is a full-bleed closing band and is the footer's
+   last child, so any bottom padding renders as an empty strip beneath it — that
+   was the dead space under the wordmark, and it is why Solo did not match Pro
+   (pro/index.html carries no override and inherits numera.css cleanly). */
 .foot{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--s4); align-items:center; color:var(--text-3); font-size:13px; }
 .foot a{ color:var(--text-2); }
 
