@@ -3,33 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Numera Pro · the whole close, on your real ledgers</title>
-<meta name="description" content="Numera Pro closes your books on the ledgers you already keep. Deep integration with QuickBooks, Xero, Sage, NetSuite and Dynamics, a console you run more agents from, and a tamper-evident audit chain on every write. $199 a month.">
-<link rel="canonical" href="https://numera.velofy.co/pro/">
-
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/numera-mark.svg">
-<meta name="theme-color" content="#0F0E0C">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Numera">
-<meta property="og:url" content="https://numera.velofy.co/pro/">
-<meta property="og:title" content="Numera Pro · the whole close, on your real ledgers">
-<meta property="og:description" content="Deep integration with any accounting software, a console you run more agents from, and a tamper-evident audit chain on every write. $199 a month.">
-<meta property="og:image" content="https://numera.velofy.co/assets/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Numera Pro · the whole close, on your real ledgers">
-<meta name="twitter:description" content="Deep integration with any accounting software. $199 a month.">
-<meta name="twitter:image" content="https://numera.velofy.co/assets/og.png">
-
+<title>NUM∑RA AI · Never close the books by hand again</title>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../numera.css">
+
+<link rel="stylesheet" href="static/css/numera2.css">
 <script>
+  window.CSRF = "";
+  // theme: set before first paint to avoid a flash; dark is the default
   (function(){
-    if(localStorage.getItem('numera-theme') === 'dark'){ document.documentElement.dataset.theme = 'dark'; }
+    const fromUrl = new URLSearchParams(location.search).get('theme');
+    if(fromUrl === 'light' || fromUrl === 'dark'){ localStorage.setItem('numera-theme', fromUrl); }
+    // paper (light) is the default; ink (dark) is the choice
+    if(localStorage.getItem('numera-theme') === 'dark'){
+      document.documentElement.dataset.theme = 'dark';
+    }
     window.numeraTheme = function(){
       const root = document.documentElement;
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -38,313 +27,425 @@
     };
   })();
 </script>
-<style>
-.wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter); }
-.section{ padding:var(--s9) 0; border-top:1px solid var(--line-2); scroll-margin-top:90px; }
-.eyebrow{ font-family:var(--f-data); font-size:11px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--text-3); }
-.h2{ font-family:var(--f-display); font-weight:780; letter-spacing:-.025em; line-height:1.04;
-  font-size:clamp(27px,3.6vw,44px); margin:var(--s3) 0 var(--s4); }
-.note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2); max-width:62ch; line-height:1.6; }
-.row{ display:flex; flex-wrap:wrap; gap:var(--s3); }
-
-.lede{ padding:112px 0 var(--s7); }
-.h-big{ font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:1.0;
-  font-size:clamp(34px,5.4vw,68px); margin:var(--s3) 0 var(--s4); max-width:17ch; }
-.h-sub{ font-size:clamp(15px,1.25vw,18px); color:var(--text-2); max-width:58ch; line-height:1.6; }
-
-.grid3{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); }
-@media(min-width:900px){ .grid3{ grid-template-columns:repeat(3,1fr); } }
-.card{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
-  box-shadow:var(--shadow-1); padding:var(--s5); min-width:0; }
-.card h3{ font-family:var(--f-display); font-size:19px; letter-spacing:-.015em; margin-bottom:var(--s2); }
-.card p{ font-size:14.5px; color:var(--text-2); line-height:1.6; }
-
-.plat{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; margin-top:var(--s5); }
-.plat div{ font-family:var(--f-data); font-size:13px; color:var(--text-2);
-  border:1px solid var(--line-2); border-radius:var(--r-m); padding:11px 13px; background:var(--bg-raised); }
-.plat div b{ color:var(--text); font-weight:600; }
-
-.steps{ list-style:none; counter-reset:s; margin-top:var(--s5); display:grid; gap:var(--s3); max-width:70ch; }
-.steps li{ counter-increment:s; position:relative; padding-left:44px; font-size:15px; color:var(--text-2); line-height:1.6; }
-.steps li::before{ content:counter(s); position:absolute; left:0; top:-1px; width:27px; height:27px;
-  display:grid; place-items:center; border-radius:999px; background:var(--bg-inset);
-  border:1px solid var(--line-2); font-family:var(--f-data); font-size:12px; color:var(--text); }
-.steps li b{ color:var(--text); font-weight:600; }
-
-/* two plans here, not the homepage's three, so override the grid */
-.prices{ display:grid; grid-template-columns:1fr; gap:var(--s4); margin-top:var(--s6); align-items:stretch; }
-@media(min-width:880px){ .prices{ grid-template-columns:1fr 1fr; } }
-.price{ position:relative; background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-l);
-  box-shadow:var(--shadow-1); padding:var(--s6); display:flex; flex-direction:column; min-width:0; }
-.price.feature{ border-color:var(--ok-line); box-shadow:var(--shadow-2); }
-.price .pname{ font-family:var(--f-data); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
-.price .amt{ font-family:var(--f-display); font-weight:800; letter-spacing:-.03em; font-size:clamp(36px,4.4vw,50px); margin:var(--s3) 0 2px; }
-.price .amt small{ font-size:16px; font-weight:500; color:var(--text-3); letter-spacing:0; }
-.price .sub2{ font-size:13.5px; color:var(--text-3); min-height:38px; }
-.price ul{ list-style:none; margin:var(--s4) 0 var(--s5); display:grid; gap:10px; }
-.price li{ font-size:14px; color:var(--text-2); display:flex; gap:9px; line-height:1.45; }
-.price li::before{ content:"✓"; color:var(--ok); flex:none; }
-.price .btn{ margin-top:auto; }
-.pfoot{ margin-top:var(--s5); font-size:13.5px; color:var(--text-3); }
-
-/* corner gate badge. Bottom-RIGHT: the content column is left-aligned and
-   capped, so the right gutter is empty and the badge covers nothing. Hidden
-   below 760px, because a fixed element that sits on top of the last
-   interactive control at 390px is a real defect, not a style choice. */
-.access-badge{ position:fixed; right:var(--gutter); bottom:18px; z-index:40;
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:var(--f-data); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--text); background:var(--bg-raised); border:1px solid var(--line-2);
-  box-shadow:var(--shadow-2); border-radius:999px; padding:9px 15px; text-decoration:none; }
-.access-badge:hover{ border-color:var(--ok-line); }
-.access-badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--ok); flex:none; }
-@media(max-width:760px){ .access-badge{ display:none; } }
-
-
-.compare{ width:100%; border-collapse:collapse; margin-top:var(--s5); font-size:14.5px; }
-.compare th, .compare td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line-2); }
-.compare th{ font-family:var(--f-data); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); font-weight:500; }
-.compare td:first-child{ color:var(--text); }
-.compare td{ color:var(--text-2); }
-.compare .yes{ color:var(--ok); font-weight:600; }
-.compare .no{ color:var(--text-3); }
-.tablewrap{ overflow-x:auto; }
-
-nav.primary a{ white-space:nowrap; }
-/* the full header (5 nav links + toggle + 2 CTAs) needs about 1065px; below
-   that the links wrap or the CTA overflows, so collapse the nav early */
-@media(max-width:1099px){ nav.primary{ display:none; } }
-@media(max-width:760px){
-  header.site .header-cta .btn{ display:inline-flex; padding:9px 14px; }
-  /* wordmark + toggle + one CTA is all that fits on a phone; Investor Access
-     stays reachable from the footer Console link and the badge on wider screens */
-  header.site .header-cta .btn-secondary{ display:none; }
-}
-
-/* gutter fix (same defect the landing page had): the .section and .lede
-   `padding: X 0 Y` shorthands zero the horizontal gutter that .wrap provides,
-   so below 1380px (where the auto margins collapse) every section sat flush
-   at the screen edge. Restore the gutter at all widths. Placed last to win
-   source order. */
-.wrap, .section, .lede{ padding-left:var(--gutter); padding-right:var(--gutter); }
-</style>
+<link rel="canonical" href="https://numera.velofy.co/pro/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
-<body id="top">
+<body x-data id="top">
 
-<header class="site">
-  <a href="../" class="wordmark">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></a>
-  <nav class="primary" aria-label="Primary">
-    <a href="../#solo">Solo</a>
-    <a href="./">Pro</a>
-    <a href="#how">How it works</a>
-    <a href="https://numera-console.velofy.co/login.html">Investors</a>
-    <a href="https://github.com/anishfyi/numera">GitHub</a>
-  </nav>
-  <div class="header-cta">
-    <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark">◐</button>
-    <a class="btn btn-secondary" href="https://numera-console.velofy.co/login.html">Investor Access</a>
-    <a class="btn btn-primary" href="#price">Get Numera Pro <span class="glyph">↗</span></a>
-  </div>
-</header>
-
-<a class="access-badge" href="https://numera-console.velofy.co/login.html" title="Read-only review console on demo data">
-  <span class="dot" aria-hidden="true"></span>Investor access only
-</a>
-
-<main>
-
-<section class="wrap lede">
-  <span class="eyebrow">NUMERA PRO</span>
-  <h1 class="h-big">The whole close, on the ledgers you already keep.</h1>
-  <p class="h-sub">Numera Pro reconciles, codes, posts the journals, preps the VAT and signs the period off. Every write is proposed for your yes, read back line by line, and sealed into a tamper-evident audit chain. No migration, no handing over control.</p>
-  <div class="row" style="margin-top:var(--s6)">
-    <a class="btn btn-primary" href="#price">$199 a month <span class="glyph">↗</span></a>
-    <a class="btn btn-secondary" href="https://cal.com/anishfyi/30min">Book a walkthrough</a>
-    <a class="btn btn-secondary" href="../">Start free with Solo</a>
-  </div>
-</section>
-
-<section class="wrap section" id="how">
-  <span class="eyebrow">01 · HOW IT WORKS</span>
-  <h2 class="h2">Algorithmic first.<br>A model only for the residue.</h2>
-  <p class="note">Parsing, categorizing, reconciling and double-entry balancing run in plain code, so they are instant, free and identical every time. A model is asked only about the handful of rows the rules cannot resolve, and every answer you approve becomes a rule. Cost falls as volume rises instead of tracking it.</p>
-
-  <ol class="steps">
-    <li><b>Drop a file.</b> A bank statement, an invoice, a CSV export. Parsing is deterministic.</li>
-    <li><b>Rules run first.</b> Your vendor map and coding rules resolve most lines for free.</li>
-    <li><b>The residue escalates.</b> Only the genuinely unclear rows reach a model, with the ledger context attached.</li>
-    <li><b>You approve.</b> The entry is shown balanced to the penny, with the resulting account balances.</li>
-    <li><b>It posts, then seals.</b> The write goes to your real ledger and onto a hash-chained audit log recording who prepared it and who confirmed it.</li>
-    <li><b>It learns.</b> Every approved resolution becomes a rule, so next month it is free again.</li>
-  </ol>
-</section>
-
-<section class="wrap section" id="integrations">
-  <span class="eyebrow">02 · INTEGRATION</span>
-  <h2 class="h2">Deep integration with any accounting software.</h2>
-  <p class="note">Numera carries a documented model of every platform it writes to: how it authenticates and what it rate limits, its entity model, its query surface, and the specific write behaviours that quietly corrupt a ledger. This is the part everyone underestimates. An update that silently wipes the fields you omitted destroys a set of books far faster than a bad categorization does.</p>
-
-  <div class="plat">
-    <div><b>QuickBooks Online</b></div>
-    <div><b>QuickBooks Desktop</b></div>
-    <div><b>Xero</b></div>
-    <div><b>NetSuite</b></div>
-    <div><b>Sage Intacct</b></div>
-    <div><b>Sage 300</b></div>
-    <div><b>Sage 300 CRE</b></div>
-    <div><b>Sage 50</b></div>
-    <div><b>Dynamics 365 BC</b></div>
-  </div>
-
-  <p class="note" style="margin-top:var(--s5)">Not on the list? Numera builds the model from that vendor's own documentation before it writes anything, in a fixed order: auth and limits, entities, queries, writes and sharp edges, then how it all maps back to double entry. The same procedure is open source in <a href="https://github.com/anishfyi/numera/blob/main/skill/numera-solo/PLATFORM-PLAYBOOK.md">Numera Solo</a>.</p>
-</section>
-
-<section class="wrap section" id="console">
-  <span class="eyebrow">03 · THE CONSOLE</span>
-  <h2 class="h2">Where an accountant runs the harder work.</h2>
-  <p class="note">The console is the cockpit for a close: bank reconciliation, recurring entries, fixed assets, FX, VAT, sign-off and the close pack. From it you run two further agents on the work that does not fit a rule, so the complicated accounting gets delegated rather than done by hand.</p>
-
-  <div class="grid3">
-    <div class="card">
-      <h3>Propose, confirm, seal</h3>
-      <p>Nothing reaches your ledger without an explicit yes. Every entry is read back line by line after posting, then sealed.</p>
+<!-- §1000 header + hamburger sheet -->
+<div x-data="{ open:false }" @keydown.escape.window="open=false" x-effect="document.body.classList.toggle('is-locked', open)">
+  <header class="site">
+    <a href="#top" class="wordmark">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></a>
+    <nav class="primary" aria-label="Primary">
+      
+      <a href="about.html#what">What it does</a>
+      <a href="about.html#integrations">Integrations</a>
+      <a href="about.html#trust">Trust</a>
+      <a href="about.html#how">How it works</a>
+      
+    </nav>
+    <div class="header-cta">
+      <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark theme" data-tip="Light / dark">◐</button>
+      
+      <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html">Investor Access <span class="glyph">↗</span></a>
+      
+      <button class="burger" :aria-expanded="open" aria-label="Menu" aria-controls="menu-sheet" @click="open=!open">
+        <span></span><span></span>
+      </button>
     </div>
-    <div class="card">
-      <h3>Tamper-evident chain</h3>
-      <p>Each write is hash-chained to the one before it, recording who prepared and who confirmed. A number that moved can always be explained.</p>
-    </div>
-    <div class="card">
-      <h3>Your credentials stay put</h3>
-      <p>Runs on your machine or your cloud. Your books and your keys never leave the box they live in.</p>
+  </header>
+
+  <div class="menu-sheet" id="menu-sheet" x-cloak x-show="open" @click.self="open=false">
+    <nav aria-label="Mobile">
+      
+      <a href="about.html#what" @click="open=false">What it does <span class="idx">01</span></a>
+      <a href="about.html#integrations" @click="open=false">Integrations <span class="idx">02</span></a>
+      <a href="about.html#trust" @click="open=false">Trust <span class="idx">03</span></a>
+      <a href="about.html#how" @click="open=false">How it works <span class="idx">04</span></a>
+      
+    </nav>
+    <div class="menu-foot">
+      <button class="theme-toggle" onclick="numeraTheme()" aria-label="Toggle light / dark theme">◐</button>
+      <span class="spec"><span>LOCAL-FIRST · SQLITE</span><span>POWERED BY CLAUDE</span></span>
+      
+      <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html" @click="open=false">Investor Access <span class="glyph">↗</span></a>
+      
     </div>
   </div>
-</section>
+</div>
 
-<section class="wrap section" id="compare">
-  <span class="eyebrow">04 · SOLO OR PRO</span>
-  <h2 class="h2">What the price actually buys.</h2>
-  <div class="tablewrap">
-    <table class="compare">
-      <thead><tr><th>&nbsp;</th><th>Numera Solo</th><th>Numera Pro</th></tr></thead>
-      <tbody>
-        <tr><td>Local double-entry bookkeeping</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Categorize and reconcile</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>P&amp;L and balance sheet</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Reason about any platform from its docs</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Authenticated write-back to your ledger</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>Curated per-platform failure handling</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>The full month-end close</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>The console, and two more agents</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>Tamper-evident audit chain</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>Price</td><td>Free forever</td><td>$199 / month</td></tr>
-      </tbody>
-    </table>
+
+
+<!-- ======================= HERO + BOOT ======================= -->
+<section class="hero hero-ledger" x-data="bootFlow(true)">
+  <div class="dateline" x-show="!booting" x-cloak
+       x-data="{ d:'', init(){ const t=()=>{ const n=new Date();
+         this.d = n.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).toUpperCase(); };
+         t(); setInterval(t, 30000); } }">
+    <span>NUM<span class="sigma-mark">∑</span>RA LEDGER</span>
+    <span class="dl-mid" x-text="d"></span>
+    <span>PROPOSED · CONFIRMED · SEALED</span>
+  </div>
+  <div class="hero-split has-exhibit">
+    <div class="hero-copy stagger">
+      <span class="spec">AI ACCOUNTANT · LOCAL-FIRST</span>
+      <h1 class="hero-title">Never close the books<br>by hand again.</h1>
+      <p class="hero-lede">Drafted by AI, approved by you - provable forever.</p>
+      <p class="sub">NumeraAI runs your month-end on your real ledger: it reconciles the bank, clears the uncategorized pile, posts the journals, preps the VAT, and signs the period off. You just review and click yes. The week-long close becomes an afternoon, and every entry is sealed into an audit trail you can prove.</p>
+      <div class="meta-row" x-show="!booting" x-cloak>
+        
+          
+          <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html">Open the review console <span class="glyph">↗</span></a>
+          <a class="btn btn-secondary" href="https://numera-console.velofy.co/login.html">Investor Access </a>
+          
+        
+        <a class="btn btn-ghost" href="about.html#how">See how it works ›</a>
+      </div>
+      <div class="meta-row" x-show="!booting">
+        <span class="spec" style="display:inline-flex; align-items:center; gap:7px"><span class="dot" style="background:var(--ok)"></span>NO INSTALL · BUILT-IN DEMO LEDGER</span>
+        <span class="spec">RUNS ON YOUR LAPTOP OR CLOUD</span>
+        <span class="spec">YOU CONFIRM EVERY WRITE</span>
+      </div>
+    </div>
+
+    <!-- the proof: a real month-end close, done and sealed -->
+    <div class="hero-exhibit" x-show="!booting" x-cloak>
+      <div class="close-card" aria-label="A month-end close, every step done and sealed">
+        <div class="cc-head"><span>Month-end close</span><span class="cc-tag">May 2026 · demo</span></div>
+        <ul class="cc-steps">
+          <li><span class="cc-do"><i class="cc-tick">✓</i>Bank reconciled</span><span class="cc-val">377.00 → 0.00</span></li>
+          <li><span class="cc-do"><i class="cc-tick">✓</i>Uncategorized cleared</span><span class="cc-val">8 of 8 coded</span></li>
+          <li><span class="cc-do"><i class="cc-tick">✓</i>Journals posted</span><span class="cc-val">recurring + accruals</span></li>
+          <li><span class="cc-do"><i class="cc-tick">✓</i>VAT prepped</span><span class="cc-val">Box 5 · 5,200.00</span></li>
+          <li><span class="cc-do"><i class="cc-tick">✓</i>Variances explained</span><span class="cc-val">3 of 3 material</span></li>
+        </ul>
+        <div class="cc-sealed"><span>Period sealed</span><span>✓ signed</span></div>
+        <div class="cc-seal">
+          <span class="cc-seal-mark">NUM∑RA<br>SEALED</span>
+          <span class="cc-seal-text"><b>Sealed into the audit chain.</b><br>HMAC-signed · you confirmed · read back line by line</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- /hero-split -->
+
+  <div x-show="booting" x-cloak style="margin-top:var(--s4); width:100%; display:flex; flex-direction:column; align-items:center; gap:var(--s4)">
+    <!-- the accountant reaches nirvana while the runtime boots -->
+    <div class="nirvana" :class="done && 'is-en'" aria-hidden="true">
+      <svg viewBox="0 0 320 310" fill="none" stroke="var(--bone)" stroke-width="1.1">
+        <text x="160" y="38" text-anchor="middle" font-size="26" stroke="none" class="n-sigma">∑</text>
+        <circle cx="160" cy="29" r="21" opacity=".4"/>
+        <g opacity=".55"><path d="M146 52 L152 78"/><path d="M160 56 L160 80"/><path d="M174 52 L168 78"/></g>
+        <circle class="n-ripple" cx="160" cy="166" r="52"/>
+        <circle class="n-ripple" cx="160" cy="166" r="52" style="animation-delay:1s"/>
+        <circle class="n-ripple" cx="160" cy="166" r="52" style="animation-delay:2s"/>
+        <g class="n-orbit" opacity=".5">
+          <text x="160" y="62" text-anchor="middle" font-size="10" stroke="none" fill="var(--bone)">DR</text>
+          <text x="160" y="282" text-anchor="middle" font-size="10" stroke="none" fill="var(--bone)">CR</text>
+          <circle cx="52" cy="166" r="2" fill="var(--bone)" stroke="none"/>
+          <circle cx="268" cy="166" r="2" fill="var(--bone)" stroke="none"/>
+        </g>
+        <g class="n-monk">
+          <circle cx="160" cy="120" r="14"/>
+          <path d="M133 160 Q160 133 187 160"/>
+          <path d="M139 156 L130 184" opacity=".7"/>
+          <path d="M181 156 L190 184" opacity=".7"/>
+          <path d="M122 192 Q160 170 198 192 Q160 212 122 192 Z"/>
+          <circle class="n-palm" cx="130" cy="186" r="3" stroke-width="1"/>
+          <circle class="n-palm" cx="190" cy="186" r="3" stroke-width="1"/>
+        </g>
+        <path d="M112 252 L160 242 L208 252 L160 263 Z"/>
+        <path d="M160 242 L160 263" opacity=".6"/>
+        <text x="160" y="288" text-anchor="middle" stroke="none" font-size="11" class="n-zero" fill="var(--bone-mute)">✓ 0.00</text>
+      </svg>
+    </div>
+
+    <div class="boot" style="width:min(560px, 100%); text-align:left">
+      <div class="b-head">
+        <span class="spec">STARTING NUM∑RA</span>
+        <span class="pill" :class="error ? 'is-variance' : (done ? 'is-balance' : 'is-pending')">
+          <span class="dot"></span><span class="lbl-txt" x-text="error ? 'Error' : (done ? 'Ready' : 'Starting')"></span>
+        </span>
+      </div>
+      <div class="b-bar"><i :style="`width:${pct}%`"></i></div>
+      <ol>
+        <template x-for="(s,i) in steps" :key="i">
+          <li :class="s.state === 'done' ? 'is-done' : (s.state === 'active' || s.state === 'error' ? 'is-active' : '')">
+            <span class="b-mark" :style="s.state === 'error' && 'color:var(--variance)'"
+              x-text="s.state === 'done' ? '✓' : (s.state === 'active' ? '›' : (s.state === 'error' ? '✕' : '·'))"></span>
+            <span x-text="s.label + (s.detail ? ' · ' + s.detail : '')"></span>
+          </li>
+        </template>
+      </ol>
+    </div>
+    <div class="banner is-variance" x-show="error" x-cloak style="width:min(560px,100%)">
+      <span class="pill is-variance"><span class="dot"></span><span class="lbl-txt">Runtime</span></span>
+      <span x-text="error"></span>
+      <button class="btn btn-secondary btn-sm b-act" @click="start()">Retry</button>
+    </div>
   </div>
 </section>
 
-<section class="wrap section" id="price">
-  <span class="eyebrow">05 · PRICING</span>
-  <h2 class="h2">Subscribe to it,<br>or hire it by the hour.</h2>
-  <p class="note">One plan with everything in it, billed monthly. No tiers, no add-ons, no per-seat maths, no annual lock-in. Or skip the subscription entirely and pay only for the work the agent actually does.</p>
+<!-- oversized wordmark as a transition band between the hero and the pitch -->
+<div class="megamark megamark-band" aria-hidden="true"><span>NUM<span class="sigma">∑</span>RA</span></div>
 
-  <div class="prices">
-    <!-- Subscribe -->
-    <div class="price feature">
-      <span class="pname">Numera Pro</span>
-      <div class="amt">$199<small> / month</small></div>
-      <p class="sub2">Everything included. Cancel whenever.</p>
-      <ul>
-        <li>The full month-end close</li>
-        <li>The console, where you run two more agents on the harder accounting</li>
-        <li>Deep integration with any accounting software</li>
-        <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
-        <li>Propose to confirm to seal, on every write</li>
-        <li>Tamper-evident audit chain</li>
-      </ul>
-      <a class="btn btn-primary" href="https://cal.com/anishfyi/30min">Get Numera Pro <span class="glyph">↗</span></a>
-    </div>
-
-    <!-- Hire -->
-    <div class="price">
-      <span class="pname">Hire the agent</span>
-      <div class="amt">$9<small> / hour</small></div>
-      <p class="sub2">Rather pay for output than a subscription? Put Numera on the clock.</p>
-      <ul>
-        <li>Pay only for hours actually worked</li>
-        <li>The full agent, on demand</li>
-        <li>Good for a one-off cleanup, a backlog, or a single close</li>
-        <li>Same propose to confirm to seal discipline</li>
-        <li>Same audit chain on every write</li>
-        <li>No monthly commitment</li>
-      </ul>
-      <a class="btn btn-secondary" href="https://cal.com/anishfyi/30min">Hire Numera <span class="glyph">↗</span></a>
-    </div>
+<!-- ======================= THE PITCH (3 pillars) ======================= -->
+<section class="section reveal" id="why">
+  <div class="section-head">
+    <h2>Month-end used to take a week.<br>Now you approve it over coffee.</h2>
+    <p class="note">NumeraAI does the accounting grunt work on your real books and hands you the close, entry by entry, for a yes or a no. You keep the control, the judgment, and a trail you can prove.</p>
+    <span class="eyebrow">WHY NUMERA</span>
   </div>
-
-  <p class="pfoot">Both run local-first: you confirm every write, and your books never leave the box.</p>
-
-  <p class="note" style="margin-top:var(--s5)">Want to try the reasoning before you pay for the writing? <a href="https://cal.com/anishfyi/30min">Book a call</a>.
-      <a href="../">Numera Solo</a> is free and open source and runs on your own machine.</p>
+  <div class="sell">
+    <article class="sell-card">
+      <span class="sell-k">Drafted by AI</span>
+      <h3>Close in an afternoon, not a week.</h3>
+      <p>It reconciles the bank, clears the uncategorized pile, posts the journals, preps the VAT and signs the period off, across your actual ledger. The grind is gone.</p>
+    </article>
+    <article class="sell-card">
+      <span class="sell-k">Approved by you</span>
+      <h3>You approve every move.</h3>
+      <p>Nothing reaches the ledger until you click yes. Reject it and it redrafts. The AI does the work; you keep the control and the call.</p>
+    </article>
+    <article class="sell-card">
+      <span class="sell-k">Provable forever</span>
+      <h3>An audit trail you can hand over.</h3>
+      <p>Every entry is read back line by line and sealed into a tamper-evident chain. Change a single row and the seal breaks. Trust an auditor can verify.</p>
+    </article>
+  </div>
 </section>
 
+<!-- ======================= THE LOOP (condensed trust) ======================= -->
+<section class="section reveal" id="loop" style="text-align:center">
+  <span class="eyebrow">EVERY WRITE, EVERY TIME</span>
+  <div class="loop-strip" aria-label="It proposes, you confirm, it posts and reads back, it is sealed">
+    <span>It proposes</span><i aria-hidden="true">→</i>
+    <span>You confirm</span><i aria-hidden="true">→</i>
+    <span>It posts &amp; reads back</span><i aria-hidden="true">→</i>
+    <span class="loop-seal">Sealed</span>
+  </div>
+  <p class="note" style="margin:var(--s5) auto 0; max-width:58ch">An AI cannot carry accountability. The sealed trail does. <a class="loop-link" href="about.html#trust">See the full trust layer ›</a></p>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section class="section reveal" style="text-align:center">
+  <span class="eyebrow">CLOSE THE BOOKS</span>
+  <h2 class="t-hero" style="margin:var(--s4) 0 var(--s5)">NEVER BY HAND AGAIN</h2>
+  <p class="note" style="margin:0 auto var(--s6); max-width:52ch">Start on the built-in demo ledger. Nothing to install, no books to connect, no card. Watch a full month close itself, then approve it.</p>
+  <div class="row" style="justify-content:center">
+    
+    <a class="btn btn-primary" href="https://numera-console.velofy.co/login.html">Open the review console <span class="glyph">↗</span></a>
+    
+    <a class="btn btn-secondary" href="about.html">How it works</a>
+  </div>
+  <p class="spec" style="margin-top:var(--s5)">LOCAL-FIRST · YOUR BOOKS NEVER LEAVE THE BOX · WRITES ALWAYS PROPOSE FIRST</p>
+</section>
+
+<style>
+/* ---- hero: copy + the live "settling" exhibit ---- */
+.hero-split.has-exhibit{ max-width:1240px; }
+/* the value sub-tagline, sitting just under the headline */
+.hero-lede{ font-size:clamp(17px, 1.1vw + 14px, 21px); font-weight:600; color:var(--text);
+  margin-top:var(--s3); letter-spacing:-.01em; }
+.hero-exhibit{ display:flex; justify-content:flex-start; }
+@media (min-width:980px){
+  .hero-split.has-exhibit{ grid-template-columns:1.04fr .96fr; align-items:center; }
+  .hero-exhibit{ justify-content:flex-end; }
+}
+@media (max-width:979px){
+  .hero-exhibit{ justify-content:flex-start; width:100%; }
+  .close-card{ max-width:480px; width:100%; }
+}
+.dateline{ margin-bottom:var(--s4); }
+@media (max-width:640px){ .dateline span:last-child{ display:none; } .dateline{ gap:var(--s3); } }
+
+/* ---- the pitch: 3 sell pillars ---- */
+.sell{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4); }
+@media (max-width:860px){ .sell{ grid-template-columns:1fr; } }
+.sell-card{ position:relative; overflow:hidden; background:var(--bg-raised); border:1px solid var(--line-2);
+  border-radius:var(--r-m); box-shadow:var(--shadow-1); padding:var(--s5);
+  transition:box-shadow .16s ease, transform .16s ease; }
+.sell-card:hover{ box-shadow:var(--shadow-2); transform:translateY(-2px); }
+.sell-k{ display:inline-block; font-family:var(--f-data); font-size:10px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ok); background:var(--ok-soft); border:1px solid var(--ok-line);
+  border-radius:999px; padding:3px 9px; margin-bottom:var(--s3); }
+.sell-card h3{ font-size:20px; line-height:1.2; letter-spacing:-.01em; margin-bottom:8px; }
+.sell-card p{ font-size:14.5px; color:var(--text-2); line-height:1.6; }
+
+/* ---- the loop strip ---- */
+.loop-strip{ display:inline-flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:var(--s3);
+  margin-top:var(--s4); font-family:var(--f-data); font-size:14px; letter-spacing:.01em; }
+.loop-strip > span{ background:var(--bg-raised); border:1px solid var(--line-2); border-radius:var(--r-s);
+  box-shadow:var(--shadow-1); padding:10px 16px; white-space:nowrap; }
+.loop-strip i{ color:var(--text-3); font-style:normal; }
+.loop-strip .loop-seal{ color:var(--seal); border-color:var(--seal); font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; }
+.loop-link{ color:var(--text); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; white-space:nowrap; }
+.loop-link:hover{ text-decoration-color:var(--text-3); }
+</style>
+
+<script>
+function bootFlow(alreadyBooted){
+  return {
+    booting:false, done:alreadyBooted, error:null, steps:[],
+    get pct(){
+      if(!this.steps.length) return 0;
+      return (this.steps.filter(s => s.state === 'done').length / this.steps.length) * 100;
+    },
+    async start(){
+      this.booting = true; this.error = null;
+      await fetch('/boot/', {method:'POST', headers:{'X-CSRFToken': window.CSRF}});
+      this.poll();
+    },
+    async poll(){
+      const r = await fetch('/boot/status/');
+      const d = await r.json();
+      this.steps = d.steps; this.error = d.error;
+      if(d.error) return;
+      if(!d.done){ setTimeout(() => this.poll(), 1000); }
+      else { this.done = true; setTimeout(() => location.href = '/accounts/signup/', 1600); }
+    }
+  }
+}
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(!e.isIntersecting) return; e.target.classList.add('is-in'); io.unobserve(e.target); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
 
 
-</main>
+<!-- §9000 footer -->
+<!-- ===================================================================
+     The commercial layer. Maintained HERE, not in the app: the NumeraAI
+     marketing pages carry no pricing, so a straight capture would ship a
+     Pro page that never asks for the sale.
+     build-from-app.sh appends this before the footer.
+     =================================================================== -->
+<style>
+  .pro-sell{ padding:var(--s9,88px) 0; border-top:1px solid var(--line-2,rgba(0,0,0,.1)); }
+  .pro-sell .wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter,28px); }
+  .pro-sell .eyebrow{ font-family:var(--f-data,monospace); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--text-3,#837E72); }
+  .pro-sell h2{ font-family:var(--f-display,system-ui); font-weight:780; letter-spacing:-.025em;
+    line-height:1.05; font-size:clamp(27px,3.6vw,44px); margin:14px 0 18px; }
+  .pro-sell .note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2,#56524A);
+    max-width:62ch; line-height:1.6; }
+  .pro-prices{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:34px; align-items:stretch; }
+  @media(min-width:880px){ .pro-prices{ grid-template-columns:1fr 1fr; } }
+  .pro-card{ background:var(--bg-raised,#fff); border:1px solid var(--line-2,rgba(0,0,0,.1));
+    border-radius:var(--r-l,18px); padding:30px; display:flex; flex-direction:column; min-width:0; }
+  .pro-card.feature{ border-color:var(--ok-line,rgba(42,112,27,.45)); box-shadow:var(--shadow-2,0 8px 30px rgba(0,0,0,.08)); }
+  .pro-card .pname{ font-family:var(--f-data,monospace); font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--text-3,#837E72); }
+  .pro-card .amt{ font-family:var(--f-display,system-ui); font-weight:800; letter-spacing:-.03em;
+    font-size:clamp(36px,4.4vw,50px); margin:14px 0 2px; }
+  .pro-card .amt small{ font-size:16px; font-weight:500; color:var(--text-3,#837E72); letter-spacing:0; }
+  .pro-card .sub2{ font-size:13.5px; color:var(--text-3,#837E72); min-height:38px; }
+  .pro-card ul{ list-style:none; margin:20px 0 26px; padding:0; display:grid; gap:10px; }
+  .pro-card li{ font-size:14px; color:var(--text-2,#56524A); display:flex; gap:9px; line-height:1.45; }
+  .pro-card li::before{ content:"\2713"; color:var(--ok,#2A701B); flex:none; }
+  .pro-card .btn{ margin-top:auto; }
+  .pro-foot{ margin-top:26px; font-size:13.5px; color:var(--text-3,#837E72); }
+</style>
+
+<section class="pro-sell" id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h2>Subscribe to it,<br>or hire it by the hour.</h2>
+    <p class="note">One plan with everything in it, billed monthly. No tiers, no add-ons, no
+      per-seat maths, no annual lock-in. Or skip the subscription entirely and pay only for the
+      work the agent actually does.</p>
+
+    <div class="pro-prices">
+      <div class="pro-card feature">
+        <span class="pname">Numera Pro</span>
+        <div class="amt">$199<small> / month</small></div>
+        <p class="sub2">Everything included. Cancel whenever.</p>
+        <ul>
+          <li>The full month-end close</li>
+          <li>The console, where you run two more agents on the harder accounting</li>
+          <li>Deep integration with any accounting software</li>
+          <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
+          <li>Propose to confirm to seal, on every write</li>
+          <li>Tamper-evident audit chain</li>
+        </ul>
+        <a class="btn btn-primary" href="https://cal.com/anishfyi/30min">Get Numera Pro</a>
+      </div>
+
+      <div class="pro-card">
+        <span class="pname">Hire the agent</span>
+        <div class="amt">$9<small> / hour</small></div>
+        <p class="sub2">Rather pay for output than a subscription? Put Numera on the clock.</p>
+        <ul>
+          <li>Pay only for hours actually worked</li>
+          <li>The full agent, on demand</li>
+          <li>Good for a one-off cleanup, a backlog, or a single close</li>
+          <li>Same propose to confirm to seal discipline</li>
+          <li>Same audit chain on every write</li>
+          <li>No monthly commitment</li>
+        </ul>
+        <a class="btn btn-secondary" href="https://cal.com/anishfyi/30min">Hire Numera</a>
+      </div>
+    </div>
+
+    <p class="pro-foot">Both run local-first: you confirm every write, and your books never leave
+      the box. <a href="https://github.com/anishfyi/numera">Numera Solo</a> is free, open source,
+      and runs on your own machine.</p>
+  </div>
+</section>
 
 <footer class="site">
   <div class="foot-grid">
     <div class="foot-links">
-      <a href="#integrations">Integrations</a>
-      <a href="#console">Console</a>
-      <a href="#how">How it works</a>
-      <a href="https://cal.com/anishfyi/30min">Book a call</a>
-      <a href="../">Numera Solo</a>
-      <a href="https://github.com/anishfyi/numera">GitHub</a>
+      <a href="https://numera-console.velofy.co/login.html">Integrations</a>
+      <a href="https://numera-console.velofy.co/login.html">Console</a>
+      <a href="https://numera-console.velofy.co/login.html">Ledgers</a>
     </div>
     <div class="foot-side">
-      <p>Runs on your cloud or your laptop, same container.<br>Algorithmic first, a model only for the residue.<br>Your credentials never leave the box.</p>
+      <p>Runs on your cloud or your laptop, same container.<br>SQLite for state, Claude for the work.<br>Your credentials never leave the box.</p>
     </div>
   </div>
-
-  <div class="foot-meta">
+  <div class="foot-meta" x-data="{ time:'', date:'',
+      init(){ const tick = () => {
+        const n = new Date();
+        this.time = 'Local ' + n.toLocaleTimeString('en-GB');
+        this.date = n.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'short', year:'numeric' })
+                  + ' (GMT' + (n.getTimezoneOffset() <= 0 ? '+' : '−')
+                  + String(Math.abs(n.getTimezoneOffset()/60)).padStart(2,'0') + ')';
+      }; tick(); setInterval(tick, 1000); } }">
     <div class="clock">
-      <b id="footClock"></b><br>
-      <span id="footDate"></span>
+      <b x-text="time"></b><br>
+      <span x-text="date"></span>
     </div>
     <div class="center">
       <a href="#top">Back to top ↑</a><br>
-      Closing books for Q3 '2026
+      Closing books for Q2 '2026
     </div>
-    <div class="right">&copy;2026 Numera</div>
+    <div class="right">©2026 NumeraAI</div>
   </div>
-
   <div class="halftone">
     <span class="wordmark" style="font-size:24px">NUM<span class="sigma">∑</span>RA<span class="ai">AI</span></span>
     <span class="quote"><span class="bracket">「</span>Refuse to be unreconciled.<span class="bracket">」</span></span>
   </div>
 </footer>
 
-<script>
-  // The marketing layout in the app renders this clock with Alpine. The static
-  // site has no Alpine, so it is plain JS here. Same output, no dependency.
-  (function () {
-    var clock = document.getElementById('footClock');
-    var date = document.getElementById('footDate');
-    if (!clock || !date) return;
-    function tick() {
-      var n = new Date();
-      var off = n.getTimezoneOffset();
-      var sign = off <= 0 ? '+' : '−';
-      var hrs = String(Math.abs(off / 60)).padStart(2, '0');
-      clock.textContent = 'Local ' + n.toLocaleTimeString('en-GB');
-      date.textContent = n.toLocaleDateString('en-GB',
-        { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' })
-        + ' (GMT' + sign + hrs + ')';
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-</script>
+
+<!-- toast rail: single instance, listens globally (design-ref §5510/§9520) -->
+<div class="toast-rail" x-data="{ items:[], n:0 }"
+  @toast.window="const t={id:++n,...$event.detail}; items.push(t); setTimeout(()=>items=items.filter(i=>i.id!==t.id),4500)">
+  <template x-for="t in items" :key="t.id">
+    <div class="toast" :class="t.kind">
+      <div>
+        <div class="t-title" x-text="t.title"></div>
+        <div class="t-body-txt" x-text="t.body"></div>
+      </div>
+      <button class="t-close" @click="items=items.filter(i=>i.id!==t.id)" aria-label="Dismiss">✕</button>
+    </div>
+  </template>
+</div>
 
 </body>
 </html>

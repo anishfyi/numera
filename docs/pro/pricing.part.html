@@ -1,0 +1,78 @@
+<!-- ===================================================================
+     The commercial layer. Maintained HERE, not in the app: the NumeraAI
+     marketing pages carry no pricing, so a straight capture would ship a
+     Pro page that never asks for the sale.
+     build-from-app.sh appends this before the footer.
+     =================================================================== -->
+<style>
+  .pro-sell{ padding:var(--s9,88px) 0; border-top:1px solid var(--line-2,rgba(0,0,0,.1)); }
+  .pro-sell .wrap{ max-width:1380px; margin:0 auto; padding:0 var(--gutter,28px); }
+  .pro-sell .eyebrow{ font-family:var(--f-data,monospace); font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--text-3,#837E72); }
+  .pro-sell h2{ font-family:var(--f-display,system-ui); font-weight:780; letter-spacing:-.025em;
+    line-height:1.05; font-size:clamp(27px,3.6vw,44px); margin:14px 0 18px; }
+  .pro-sell .note{ font-size:clamp(15px,1.2vw,17px); color:var(--text-2,#56524A);
+    max-width:62ch; line-height:1.6; }
+  .pro-prices{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:34px; align-items:stretch; }
+  @media(min-width:880px){ .pro-prices{ grid-template-columns:1fr 1fr; } }
+  .pro-card{ background:var(--bg-raised,#fff); border:1px solid var(--line-2,rgba(0,0,0,.1));
+    border-radius:var(--r-l,18px); padding:30px; display:flex; flex-direction:column; min-width:0; }
+  .pro-card.feature{ border-color:var(--ok-line,rgba(42,112,27,.45)); box-shadow:var(--shadow-2,0 8px 30px rgba(0,0,0,.08)); }
+  .pro-card .pname{ font-family:var(--f-data,monospace); font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--text-3,#837E72); }
+  .pro-card .amt{ font-family:var(--f-display,system-ui); font-weight:800; letter-spacing:-.03em;
+    font-size:clamp(36px,4.4vw,50px); margin:14px 0 2px; }
+  .pro-card .amt small{ font-size:16px; font-weight:500; color:var(--text-3,#837E72); letter-spacing:0; }
+  .pro-card .sub2{ font-size:13.5px; color:var(--text-3,#837E72); min-height:38px; }
+  .pro-card ul{ list-style:none; margin:20px 0 26px; padding:0; display:grid; gap:10px; }
+  .pro-card li{ font-size:14px; color:var(--text-2,#56524A); display:flex; gap:9px; line-height:1.45; }
+  .pro-card li::before{ content:"\2713"; color:var(--ok,#2A701B); flex:none; }
+  .pro-card .btn{ margin-top:auto; }
+  .pro-foot{ margin-top:26px; font-size:13.5px; color:var(--text-3,#837E72); }
+</style>
+
+<section class="pro-sell" id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h2>Subscribe to it,<br>or hire it by the hour.</h2>
+    <p class="note">One plan with everything in it, billed monthly. No tiers, no add-ons, no
+      per-seat maths, no annual lock-in. Or skip the subscription entirely and pay only for the
+      work the agent actually does.</p>
+
+    <div class="pro-prices">
+      <div class="pro-card feature">
+        <span class="pname">Numera Pro</span>
+        <div class="amt">$199<small> / month</small></div>
+        <p class="sub2">Everything included. Cancel whenever.</p>
+        <ul>
+          <li>The full month-end close</li>
+          <li>The console, where you run two more agents on the harder accounting</li>
+          <li>Deep integration with any accounting software</li>
+          <li>QuickBooks, Xero, Sage, NetSuite, Dynamics 365 and more</li>
+          <li>Propose to confirm to seal, on every write</li>
+          <li>Tamper-evident audit chain</li>
+        </ul>
+        <a class="btn btn-primary" href="https://cal.com/anishfyi/30min">Get Numera Pro</a>
+      </div>
+
+      <div class="pro-card">
+        <span class="pname">Hire the agent</span>
+        <div class="amt">$9<small> / hour</small></div>
+        <p class="sub2">Rather pay for output than a subscription? Put Numera on the clock.</p>
+        <ul>
+          <li>Pay only for hours actually worked</li>
+          <li>The full agent, on demand</li>
+          <li>Good for a one-off cleanup, a backlog, or a single close</li>
+          <li>Same propose to confirm to seal discipline</li>
+          <li>Same audit chain on every write</li>
+          <li>No monthly commitment</li>
+        </ul>
+        <a class="btn btn-secondary" href="https://cal.com/anishfyi/30min">Hire Numera</a>
+      </div>
+    </div>
+
+    <p class="pro-foot">Both run local-first: you confirm every write, and your books never leave
+      the box. <a href="https://github.com/anishfyi/numera">Numera Solo</a> is free, open source,
+      and runs on your own machine.</p>
+  </div>
+</section>
