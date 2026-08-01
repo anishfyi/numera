@@ -797,7 +797,7 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); }
 .foot-meta .center a{ color:var(--text); }
 .foot-meta .right{ font-size:14px; color:var(--text-2); }
 @media (max-width:640px){ .foot-meta{ flex-direction:column; align-items:flex-start; } .foot-meta .center{ text-align:left; } }
-.halftone{ position:relative; height:240px; overflow:hidden;
+.halftone{ position:relative; height:132px; overflow:hidden;
   display:flex; align-items:center; justify-content:space-between;
   padding:0 var(--gutter); gap:var(--s4); }
 .halftone::before{ content:""; position:absolute; inset:-40px;
@@ -810,7 +810,7 @@ footer.site{ border-top:1px solid var(--line-2); margin-top:var(--s8); }
 .halftone .wordmark, .halftone .quote{ position:relative; z-index:1; }
 .halftone .quote{ font-size:clamp(15px, 2vw, 21px); font-weight:500; text-align:right; }
 .halftone .quote .bracket{ color:var(--text-3); font-weight:400; }
-@media (max-width:640px){ .halftone{ height:190px; } }
+@media (max-width:640px){ .halftone{ height:112px; } }
 
 /* hero/nirvana svg animation hooks */
 .spark{ animation:pulse 2.2s ease-in-out infinite; }
